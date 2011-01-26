@@ -1,4 +1,4 @@
-from abandi import version, downloader, path
+from path import path
 from abandi.cli import call
 from yapsy.IPlugin import IPlugin
 import logging
@@ -26,18 +26,35 @@ class scummvm(IPlugin):
         game.scummvm_id = self.scummvm_id(game)
         self.downloadSupportFiles(game)
         self.do_copy(game)
-        (stdout, stderr) = call('scummvm -p %s %s' % (game.dir, game.scummvm_id))
+        game_dir = path(game.dir)
+        if not len(game_dir.files()):
+            game_dir = game_dir.dirs()[0]
+        (stdout, _, _) = call('scummvm -p %s %s' % (game_dir, game.scummvm_id))
 
+    def can_run_game(self, game):
+        ok = False
+        try:
+            ok = self.scummvm_id(game)
+        except:
+            pass
+        return ok
+    
     def version(self):
-        (stdout, stderr) = call('scummvm -v')
+        (stdout, _, _) = call('scummvm -v')
         return version.extract_version(stdout)
 
     def do_copy(self, game):
-        dir = path.path(game.dir)
+        dir = path(game.dir)
         def copyls(src, trg):
-            files=dir.files(src.upper())+dir.files(src.lower())
+            files = dir.files(src.upper()) + dir.files(src.lower())
             files.sort()
-            for i in [1,2]:
+            if len(files) == 2:
+                t1 = dir / (trg % (1))
+                t2 = dir / (trg % (2))
+                files[0].copy(t1)
+                files[1].copy(t2)
+            else:
+            for i in [1, 2]:
                 t = dir / (trg % (i))
                 if not t.exists():
                     for s in files:
@@ -82,7 +99,7 @@ class scummvm(IPlugin):
 
     def getGameListInt(self):
         if not self.gameMap:
-            (stdout, stderr) = call('scummvm --list-games')
+            (stdout, _, _) = call('scummvm --list-games')
             self.gameMap = self.extractGameMap(stdout)
         return self.gameMap
 
