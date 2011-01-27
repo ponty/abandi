@@ -1,4 +1,4 @@
-from abandi.path import path
+from path import path
 
 
 # plugins

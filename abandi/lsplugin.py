@@ -1,4 +1,4 @@
-from abandi.path import path
+from path import path
 from abandi.pluginloader import plugins_unsorted
 import cli4func
 import logging

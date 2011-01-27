@@ -1,5 +1,5 @@
 from abandi import config
-from abandi.path import path
+from path import path
 from yapsy.PluginManager import PluginManager
 import cli4func
 import logging
