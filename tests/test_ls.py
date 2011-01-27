@@ -6,7 +6,7 @@ import unittest
 
 class TestLs(unittest.TestCase):
 
-    def test_no(self):
+    def test(self):
         list_versions()
         list_plugins()
         list_runners()

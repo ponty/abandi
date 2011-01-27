@@ -15,7 +15,7 @@ class openmsx(IPlugin):
     ubuntu_package='openmsx'
 
     def run_game(self,game):
-        (stdout,stderr) =call('openmsx %s' % searchExe(game.dir, game.name, self.extensions))
+        (stdout,stderr,_) =call('openmsx %s' % searchExe(game.dir, game.name, self.extensions))
     def version(self):
-        (stdout,stderr) =call('openmsx -v')
+        (stdout,stderr,_) =call('openmsx -v')
         return version.extract_version(stdout)

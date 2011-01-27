@@ -17,5 +17,5 @@ class hatari(IPlugin):
     def run_game(self,game):
         (stdout,stderr) =call('hatari %s' % searchExe(game.dir, game.name, self.extensions))
     def version(self):
-        (stdout,stderr) =call('hatari -v')
+        (stdout,stderr,_) =call('hatari -v')
         return version.extract_version(stdout)

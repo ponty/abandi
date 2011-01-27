@@ -15,7 +15,7 @@ class Stella(IPlugin):
     ubuntu_package='stella'
 
     def run_game(self,game):
-        (stdout,stderr) =call('stella %s' % searchExe(game.dir, game.name, self.extensions))
+        (stdout,stderr,_) =call('stella %s' % searchExe(game.dir, game.name, self.extensions))
     def version(self):
-        (stdout,stderr) =call('stella -help')
+        (stdout,stderr,_) =call('stella -help')
         return version.extract_version(stdout)

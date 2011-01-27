@@ -18,10 +18,10 @@ class zsnes(IPlugin):
     ubuntu_package='zsnes'
 
     def run_game(self,game):
-        (stdout,stderr) =call('zsnes "%s"' % searchExe(game.dir, game.name, self.extensions))
+        (stdout,stderr,_) =call('zsnes "%s"' % searchExe(game.dir, game.name, self.extensions))
     def version(self):
         ''' no switch for version
         '''
-        (stdout, stderr) = call('zsnes -?')
+        (stdout, stderr,_) = call('zsnes -?')
         v =  None if stderr.strip() else 'unknown'
         return v
