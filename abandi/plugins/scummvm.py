@@ -15,10 +15,11 @@ SKY_CPT_URL = "https://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/
 class scummvm(IPlugin):
     hook = 'runner'
 
-    long_name = 'scummvm'
+    long_name = 'ScummVM'
     extensions = []
     platforms = ['dos', 'c64']
     ubuntu_package = 'scummvm'
+    home_url = 'http://www.scummvm.org/'
 
     def __init__(self):
         self.gameMap = None

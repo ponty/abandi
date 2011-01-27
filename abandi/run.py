@@ -10,6 +10,11 @@ message = '''Install the game first:
 or run with auto-install:
     run -a {source} {id}'''
 def run_game(source, id, runner='auto', auto_install=False):
+    ''' start game using selected emulator
+    :param source: ['gb64',..]
+    :param id:     ['1',..]
+    :param runner: emulator ['auto','dosbox','scummvm',..]
+    '''
     game = info.search_game(source, id)
     if not game or not game.dir:
         if auto_install:

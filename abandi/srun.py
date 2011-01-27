@@ -5,7 +5,7 @@ import game
 import logging
 
 
-def srun(columns='all', where='', orderby='name', name='', platform='', source='', 
+def srun(columns='[source id platform] name', where='', orderby='name', name='', platform='', source='', 
          runner='auto', auto_install=False,
          index=0):
     ''' search and run'''

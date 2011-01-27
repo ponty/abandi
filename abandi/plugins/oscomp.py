@@ -6,9 +6,11 @@ class Oscomp(IPlugin):
     hook='game_source'
 
     long_name = 'Oldschool Computer'
-    homepage = 'http://oscomp.hu/?lang/en&'
+    homepage = 'http://oscomp.hu/'
     max_game_id = 1230
     icon = 'http://oscomp.hu/sys/img/hdr.jpg'
+    # TODO: check all
+    platforms = 'dos c64 c128 cplus4 msx megadrive mastersystem gb atari2k6 nes snes amiga'.split()
 
     def parse_game(self, id):
         game = Game()

@@ -5,16 +5,19 @@ import game
 import logging
 
 def search_games(where='', orderby='name'):
+    '''
+    '''
     games = db.load_games(where, orderby)
     return games
 
 def search(columns='[source id platform] name', where='', orderby='name', name='', platform='', source='', runner=''):
     ''' search in game database
-    
-    where   :  SQL where, e.g. "id>5 and name like falcon"
-    name    :  game name like this
-    source  :  check lsplugin for list
-    platform :  check lsplatform for list
+
+    :param where:     SQL where, e.g. "id>5 and name like falcon"
+    :param name:      game name like this
+    :param source:    check lsplugin for list
+    :param platform:  check lsplatform for list
+
     '''
     #if columns != 'all':
     #    columns = columns.split(',')
@@ -35,11 +38,13 @@ def search(columns='[source id platform] name', where='', orderby='name', name='
     return games
 
 def search_for_runner(runner_name, games):
+    '''
+    '''
     r = runner.Runner(runner_name)
-    games = filter(lambda x:x.platform in r.platforms, games) 
+    games = filter(lambda x:x.platform in r.platforms, games)
     if hasattr(r, 'can_run_game'):
-        games = filter(lambda x:r.can_run_game(x), games) 
-        
+        games = filter(lambda x:r.can_run_game(x), games)
+
     return games
-   
+
 cli4func.main(search)

@@ -45,7 +45,12 @@ def extractInfo(func, debug=False):
         help = ''
         option_strings = []
         for line in doclist:
+            line=line.strip()
             first_word = (line.split() + [''])[0]
+            if first_word==':param':
+                line=line.replace(':param', '', 1)
+                first_word = (line.split() + [''])[0]
+            first_word=first_word.strip(':')
             if  first_word == x:
                 help=line.replace(x, '', 1).strip()
         if p:

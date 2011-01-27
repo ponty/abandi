@@ -8,6 +8,10 @@ def parse_game(source, id):
     return game
 
 def print_game(source, id):
+    '''parse game on source and print all information
+    :param source: ['gb64',..]
+    :param id:     ['1',..]
+    '''
     g = parse_game(source, id)
     game.print_game(g)
 

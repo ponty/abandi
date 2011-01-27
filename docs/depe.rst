@@ -1,18 +1,43 @@
 Dependencies
 ==================
 
-
-for running
------------------
+basic
+---------
 
 .. csv-table::
 
-   "7zip"   , recommended, "can decompress a lot of formats, but can not handle all rars"
-   "unrar"  , recommended, "can decompress all rars"
-   "patool" , recommended, "wrapper"
+   "python" , , ""
+   "yapsy" , , "plugin system"
+
+html parsers
+----------------
+
+.. csv-table::
+
+   "lxml" , optional, "html parser"
+   "BeautifulSoup" , optional, "html parser"
+
+unpackers
+-----------
+
+.. csv-table::
+
+   "7zip"   , optional, "can decompress a lot of formats, but can not handle all rars"
+   "unrar"  , optional, "can decompress all rars"
+   "patool" , optional, "decompressor wrapper"
+
+supported emulators
+------------------------
+
+..  [[[cog
+..  import os
+..  os.system('python -m abandi.lsrunner  > docs/emu.csv')
+..  ]]]
+..  [[[end]]]
+
+.. csv-table:: 
+   :header: "id", "name", "platforms","url"
+   :file: emu.csv
 
 
-
-for development
------------------
 

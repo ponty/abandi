@@ -28,12 +28,23 @@ def chooseGameExe(exeList, gamename):
         else      :
             exe = checkGameName(newList, gamename)
             if not exe:
-                def keyFunc1(s):
-                    return -len(s)
+                #def keyFunc1(s):
+                #    return -len(s)
                 #def keyFunc2(s):
                 #    return s.lower().replace("exe", "1").replace("com", "2").replace("bat", "3")
+                def cmp(x,y):
+                    if len(x)>len(y):
+                        return -1
+                    if len(x)<len(y):
+                        return 1
+                    if x>y:
+                        return 1
+                    if x<y:
+                        return -1
+                     
+                    return 0
 
-                newList.sort(key=keyFunc1)
+                newList.sort(cmp=cmp,)#key=keyFunc1)
                 #newList.sort(key=keyFunc2)
 
                 logging.debug("after sort:")

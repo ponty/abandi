@@ -60,7 +60,7 @@ def print_games(games, col_format='name'):
             #columns.append(x)
             col_format=col_format.replace(x, '{'+x+'}')
     #print col_format
-    
+
     for g in games:
         gd = g.__dict__
 #        line = u'[{source} {id} {platform}] {name}'.format(**gd)

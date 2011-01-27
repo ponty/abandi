@@ -8,6 +8,7 @@ class Gamebase64(IPlugin):
     long_name='Gamebase 64'
     homepage='http://www.gamebase64.com'
     max_game_id=10000
+    platforms = ['c64']
 
 
     def parseLinks(self, game, parser):

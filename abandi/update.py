@@ -9,8 +9,9 @@ import time, sys
 
 
 def update(source, id, force=False):
-    '''source can be 'all'
-    id     can be 'all'
+    '''parse and update game in database
+    :param source: ['all','gb64',..]
+    :param id:     ['all','1','1-5','1,5-8,10',..]
     '''
     if source=='all':
         for x in game_sources():

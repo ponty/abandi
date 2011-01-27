@@ -8,7 +8,8 @@ from yapsy.IPlugin import IPlugin
 class openmsx(IPlugin):
     hook = 'runner'
 
-    long_name='openmsx'
+    home_url = 'http://openmsx.sourceforge.net/'
+    long_name='openMSX'
     extensions=['cas,di1,di2,dsk,xsa,rom,wav']
     platforms=['msx']
     ubuntu_package='openmsx'

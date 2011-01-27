@@ -16,8 +16,10 @@ except ImportError, e:
     ALL_TASKS_LOADED = False
 
 
-
-version = '0.1.0'
+sys.path.append(path('.').abspath())
+import abandi
+version = abandi.__version__
+#version = '0.1.0'
 
 classifiers = [
     # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -27,6 +29,9 @@ classifiers = [
 install_requires = [
     # -*- Install requires: -*-
     'setuptools',
+    'yapsy',
+    'patool',
+    
     ]
 
 entry_points = """
@@ -40,7 +45,7 @@ setup(
     description='abandonware game installer',
     long_description=open('README.rst', 'r').read(),
     classifiers=classifiers,
-    keywords='game install',
+    keywords='abandonware game install',
     author='ponty',
     #author_email='zy@gmail.com',
     url='',
@@ -90,12 +95,14 @@ if ALL_TASKS_LOADED:
 
 
 def sh2(c, s):
+    c.outl('')
     c.outl('::')
     c.outl('')
     c.outl('\t$ ' + s)
     output = subprocess.Popen(s, stdout=subprocess.PIPE, shell=1).communicate()[0]
     for x in output.splitlines():
         c.outl('\t' + x)
+    c.outl('')
     c.outl('..')
 
 __builtins__['sh2'] = sh2

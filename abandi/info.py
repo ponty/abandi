@@ -9,6 +9,10 @@ def search_game(source, id):
     return game
 
 def print_game(source, id):
+    '''print all information for game in database
+    :param source: ['gb64',..]
+    :param id:     ['1',..]
+    '''
     g = search_game(source, id)
     game.print_game(g)
 

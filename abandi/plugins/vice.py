@@ -6,6 +6,7 @@ class Vice(IPlugin):
     hook = 'runner'
 
     long_name = 'VICE'
+    home_url = 'http://www.viceteam.org/'
     extensions = ['t64', 'd64', 'prg']
     platforms = ['c64']
     ubuntu_package = 'vice'
@@ -15,6 +16,6 @@ class Vice(IPlugin):
     def version(self):
         ''' no switch for version
         '''
-        (stdout, stderr) = call('x64 -h')
+        (stdout, stderr,_) = call('x64 -h')
         v =  None if stderr.strip() else 'unknown'
         return v

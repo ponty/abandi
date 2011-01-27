@@ -16,3 +16,4 @@ pip-log.txt
 *.bak
 */build/*
 */_build/*
+.*

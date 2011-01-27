@@ -14,13 +14,22 @@ def _egg_info(path_to_egg='../'):
     version = '%s.%s' % tuple([int(x) for x in parsed_version[0:2]])
     return egg_info.name, egg_info.author, version, release
 
-project, author, version, release = _egg_info()
+project, author, _, release = _egg_info()
 copyright = '2011, ponty'
+
+import sphinx
+import sys
+from path import path
+
+sys.path.append(path('..').abspath())
+import abandi
+version = abandi.__version__
 
 # Extension
 extensions = [
-	 # -*-Extensions: -*-
-	]
+     # -*-Extensions: -*-
+     'sphinx.ext.autodoc',
+    ]
 intersphinx_mapping = {'http://docs.python.org/': None}
 
 # Source

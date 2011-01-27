@@ -10,6 +10,7 @@ class Osd(IPlugin):
     homepage = 'http://www.oldschooldos.com/'
     max_game_id = 121
     icon = 'http://www.oldschooldos.com/images/header.gif'
+    platforms = ['dos']
 
     def __init__(self):
         self.all_links = None

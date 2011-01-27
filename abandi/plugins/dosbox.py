@@ -7,7 +7,8 @@ from yapsy.IPlugin import IPlugin
 class Dosbox(IPlugin):
     hook='runner'
 
-    name='dosbox'
+    long_name = 'DOSBox'
+    home_url = 'http://www.dosbox.com/'
     extensions=['exe','bat','com']
     platforms=['dos']
     ubuntu_package='dosbox'

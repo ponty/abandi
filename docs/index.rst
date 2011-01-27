@@ -6,8 +6,10 @@ Contents:
     :maxdepth: 2
 
     depe
+    source
     usage
-
+    changes
+    help
 
 Indices and tables
 ==================

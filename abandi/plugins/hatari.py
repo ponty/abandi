@@ -8,7 +8,8 @@ from yapsy.IPlugin import IPlugin
 class hatari(IPlugin):
     hook = 'runner'
 
-    name='hatari'
+    long_name = 'Hatari'
+    home_url = 'http://hatari.berlios.de/'
     extensions=['bin']
     platforms=['atari2k6']
     ubuntu_package='hatari'

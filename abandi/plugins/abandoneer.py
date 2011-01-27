@@ -10,6 +10,7 @@ class Abandoneer(IPlugin):
     homepage='http://www.abandoneer.com/'
     max_game_id=150
     icon='http://www.abandoneer.com/img/transparent.ico'
+    platforms = ['dos']
 
     def parse_game(self, id):
         game = Game()

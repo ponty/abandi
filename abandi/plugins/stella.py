@@ -8,7 +8,8 @@ from yapsy.IPlugin import IPlugin
 class Stella(IPlugin):
     hook = 'runner'
 
-    long_name='stella'
+    home_url = 'http://stella.sourceforge.net/'
+    long_name='Stella'
     extensions=['bin']
     platforms=['atari2k6']
     ubuntu_package='stella'

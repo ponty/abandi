@@ -11,6 +11,10 @@ import sys
 
 def install_game(source, id, downloadonly=False,
                   unpackonly=False,removezip=False,nocache=False):
+    '''download and unpack game found in database
+    :param source: ['gb64',..]
+    :param id:     ['1',..]
+    '''
     game = info.search_game(source, id)
     if not game:
         game = update_game(source, id)

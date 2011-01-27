@@ -4,11 +4,16 @@ import cli4func
 import logging
 import operator
 import platform
+import abandi
 
 def list_versions():
     ''' list plugin backend versions
     '''
+
     print 'python \t\t'+platform.python_version()
+    
+    print 'abandi \t\t'+abandi.__version__
+
     all = plugins_unsorted()
     all.sort(key=operator.attrgetter('name'))
 
