@@ -3,11 +3,30 @@ command line help
 
 ..  [[[cog
 ..  import abandi
-..  ls='parse update info search install run srun'.split()
+..  ls='dbdownload parse update info search install run srun'.split()
 ..  for x in ls:
 ..      cog.outl('\n%s\n---------\n' % x)
 ..      sh2(cog,'python -m abandi.%s --help' % x)
 ..  ]]]
+
+dbdownload
+---------
+
+
+::
+
+	$ python -m abandi.dbdownload --help
+	usage: dbdownload.py [-h] [-u URL] [--debug]
+	
+	downloads and unpacks game database
+	
+	optional arguments:
+	  -h, --help         show this help message and exit
+	  -u URL, --url URL  : packed sqlite file [default=https://github.com/download
+	                     s/ponty/abandi/parsedb.sqlite.7z]
+	  --debug            Set logging level to DEBUG
+
+..
 
 parse
 ---------

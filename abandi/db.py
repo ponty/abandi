@@ -67,6 +67,7 @@ def execute(cur, sql, x=tuple()):
     cur.execute(sql, x)
 
 def open():
+    init()
     #conn = sqlite3.connect(FILE_NAME[n])
     conn = sqlite3.connect(':memory:')
     cur = conn.cursor()
@@ -77,7 +78,6 @@ def open():
 def save_game(game):
     game.source = game.source.lower()
 
-    init()
     (conn, cur) = open()
 
     cur = conn.cursor()
@@ -110,7 +110,7 @@ def close(conn):
 
 def load_games(where='', orderby='name'):
     if not exists(0):
-        return
+        return []
 
     (conn, cur) = open()
 

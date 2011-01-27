@@ -14,7 +14,7 @@ def srun(columns='[source id platform] name', where='', orderby='name', name='',
     games=search(columns, where, orderby, name, platform, source)
     if len(games)>index and index>=0:
         g=games[index]
-        print 'starting game:'+g.name
+        #print 'starting game:'+g.name
         run_game(g.source, g.id,  auto_install=auto_install, runner=runner)
     else:
         print 'index out of bounds!'

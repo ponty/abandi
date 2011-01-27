@@ -21,6 +21,10 @@ update some games  in database from gamebase64_
 ..
 ..  [[[end]]]
 
+or download the default game database::
+
+    $ python -m abandi.dbdownload
+
 install
 ---------
 
@@ -94,19 +98,19 @@ run game
 
 run galaga_ by id::
 
-	$ python -m abandi.run gb64 3020
+    $ python -m abandi.run gb64 3020
 
 run galaga_ by name::
 
-	$ python -m abandi.srun --name galaga
+    $ python -m abandi.srun --name galaga
 
-run `maniac mansion`_ using vice_ (default)::
+run `maniac mansion`_ using vice_::
 
-	$ python -m abandi.run gb64 4577
+    $ python -m abandi.run gb64 4577 --runner vice
 
 run `maniac mansion`_ using scummvm_::
 
-	$ python -m abandi.run gb64 4577 --runner scummvm
+    $ python -m abandi.run gb64 4577 --runner scummvm
 
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/
