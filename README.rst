@@ -34,8 +34,8 @@ Installation
 
 The easiest way to get abandi is if you have pip_ installed::
 
-    pip install git+http://github.com/ponty/abandi.git
-    pip install https://github.com/ponty/abandi/zipball/v0.0.2
+    pip install https://github.com/ponty/abandi/zipball/master
+    easy_install https://github.com/ponty/abandi/zipball/master
 
 (pip_ install with setuptools_: ``easy_install pip``)
 
