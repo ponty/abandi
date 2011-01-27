@@ -24,6 +24,8 @@ class urllib (IPlugin):
     def download(self, url, targetDir, fileName=None, useSessionCookie=False, referer=None):
         cookie = None
         targetDir = path(targetDir)
+        if not targetDir.isdir():
+            targetDir.makedirs()
         if useSessionCookie:
             parent = urllib2.urlopen(referer)
             cookie = parent.info()['set-cookie']
