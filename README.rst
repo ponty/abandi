@@ -6,6 +6,10 @@ Console-based abandonware game installer and runner.
 No GUI.
 Games are downloaded over internet.
 
+source: https://github.com/ponty/abandi
+
+documentation: https://ponty.github.com/abandi
+
 Basic usage
 ------------
 The selected game will be downloaded,
@@ -28,10 +32,14 @@ if you have an up-to-date database::
 Installation
 ------------
 
-The easiest way to get abandi is if you have setuptools_ installed::
+The easiest way to get abandi is if you have pip_ installed::
 
-    easy_install abandi
+    pip install git+http://github.com/ponty/abandi.git
+
+(pip_ install with setuptools_: ``easy_install pip``)
+
+
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
-
+.. _pip: http://pip.openplans.org/
 
