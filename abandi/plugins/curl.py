@@ -1,5 +1,5 @@
 from abandi import FileUtils
-from abandi.path import path
+from path import path
 from yapsy.IPlugin import IPlugin
 import logging
 import pycurl

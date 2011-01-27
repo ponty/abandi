@@ -1,6 +1,6 @@
 from abandi import cli
 from abandi.cli import call
-from abandi.path import path
+from path import path
 from yapsy.IPlugin import IPlugin
 
 

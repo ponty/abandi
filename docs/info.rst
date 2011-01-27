@@ -12,7 +12,7 @@ versions
 
 	$ python -m abandi.lsversion
 	python 		2.6.6
-	abandi 		0.0.1
+	abandi 		0.0.2
 	dosbox		0.74
 	hatari		1.4.0
 	openmsx		0.8.0

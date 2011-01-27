@@ -1,7 +1,7 @@
 from abandi import config
 from abandi.downloader import Downloader
 from abandi.htmlparser import HtmlParser
-from abandi.path import path
+from path import path
 import logging
 import re
 

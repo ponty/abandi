@@ -3,9 +3,10 @@ Created on Oct 11, 2009
 
 @author: titi
 '''
-from abandi import FileUtils, path
+from abandi import FileUtils
 from abandi.downloader import Downloader
 from yapsy.IPlugin import IPlugin
+import path
 
 class Cache ( IPlugin):
     hook='downloader'
@@ -16,6 +17,7 @@ class Cache ( IPlugin):
     def download(self, url, targetDir, fileName=None, **kw):
         #assert self.backend
         targetDir = path.path(targetDir)
+
         if not fileName:
             fileName = FileUtils.convertToFileName(url)
         pfad = targetDir / fileName;
