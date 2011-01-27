@@ -18,5 +18,5 @@ class Dosbox(IPlugin):
         command = 'dosbox -c "mount c %s" -c c: -c %s' % vars
         cli.call(command)
     def version(self):
-        (stdout,stderr) =call('dosbox -version')
+        (stdout,stderr,_) =call('dosbox -version')
         return version.extract_version(stdout)

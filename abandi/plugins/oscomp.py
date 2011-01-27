@@ -53,9 +53,9 @@ class Oscomp(IPlugin):
         game.programmer = (parser.getTextAfter("Author"))
 
         # FIXME
-        game.screenshotUrls = "http://oscomp.hu/img.php?" + str(game.id)
+        game.screenshot_url_list = "http://oscomp.hu/img.php?" + str(game.id)
 
-        game.gameFileURL = ("http://oscomp.hu/dlgame.php?" + str(game.id))
+        game.game_file_url = ("http://oscomp.hu/dlgame.php?" + str(game.id))
 
         parsedPlatform = parser.getTextAfter("Platform")
         game.platform = game_platform.id(parsedPlatform)

@@ -21,9 +21,9 @@ class Gamebase64(IPlugin):
 
         for text in parser.getLinks():
             if (text.endswith(".zip")):
-                game.gameFileURL = text
+                game.game_file_url = text
             if (text.endswith(".sid")):
-                game.musicFileURL = text
+                game.music_file_url = text
 
     def checkIfReal(self, text):
         ''' filters NONE,UNKNOWN,.. out '''
@@ -56,7 +56,7 @@ class Gamebase64(IPlugin):
         game.source = self.name
         self.parseLinks(game, parser)
 
-        game.screenshotUrls = '|'.join(self.selectScreenshots(parser.getImages(), id))
+        game.screenshot_url_list = '|'.join(self.selectScreenshots(parser.getImages(), id))
 
         if not game or not game.name or "Banner Exchange" in game.name:
             return None

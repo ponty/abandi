@@ -38,7 +38,7 @@ class Abandoneer(IPlugin):
         game.releaseYear = parser.getTextAfter("Year:")
         game.genre = parser.getTextAfter("Genre:")
         game.programmer = parser.getTextAfter("Developer:")
-        game.screenshotUrls = '|'.join(self.selectScreenshots(parser.getImages(), game.id))
+        game.screenshot_url_list = '|'.join(self.selectScreenshots(parser.getImages(), game.id))
         game.platform = 'dos'
 
     def selectScreenshots(self, images, id):
@@ -55,5 +55,5 @@ class Abandoneer(IPlugin):
     def game_file_url(self, game):
         url = "http://abandoneer.com/download.php?gameid="+ str(game.id)
         parser = WebParser.WebParser(url,cached=False)
-        gameFileUrl = parser.getFirstLink(".*\\.exe$")
-        return gameFileUrl
+        game_file_url = parser.getFirstLink(".*\\.exe$")
+        return game_file_url

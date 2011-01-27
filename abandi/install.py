@@ -6,6 +6,7 @@ from abandi.update import update_game
 import cli4func
 import db
 import os
+import sys
 
 
 def install_game(source, id, downloadonly=False,
@@ -35,15 +36,17 @@ def download_game(game,nocache=False):
     if hasattr(src_plugin,'game_file_url'):
         gameUrl = src_plugin.game_file_url(game)
     else:
-        gameUrl = game.gameFileURL
+        gameUrl = game.game_file_url
 
     downloader = Downloader(cached=not nocache)
-    print 'downloading %s..' % game.name
+    print 'downloading %s...' % game.name,
+    sys.stdout.flush()
+    
     game.zip = downloader.download(gameUrl, targetDir, **downloadOptions)
-    print '\t\t\t ..OK'
+    print 'OK'
     #downloader = DownloaderFactory.createDownloader(not nocache)
     #def game_downloader(game, targetDir, downloader):
-    #    gameUrl = game.gameFileURL
+    #    gameUrl = game.game_file_url
     #    game.zip = downloader.downloadFile(gameUrl, targetDir,
     #                                       downloadOptions=downloadOptions)
     #if src_plugin.game_downloader:
@@ -54,14 +57,18 @@ def download_game(game,nocache=False):
 
 def unpack_game(game,removezip=False):
     targetDir = config.GAMES / game.source /convertToFileName(game.name)+'.'+str(game.id)
-    print 'unpacking %s..' % game.name
+    
+    print 'unpacking %s...' % game.name,
+    sys.stdout.flush()
+    
     msg=unpacker.Unpacker().unpack(game.zip, targetDir)
     if msg:
         return False
-    print '\t\t\t ..OK'
+    print 'OK'
     if removezip:
         os.remove(game.zip)
     game.dir = targetDir
     db.save_game(game)
     return True
+
 cli4func.main(install_game)

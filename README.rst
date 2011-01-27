@@ -1,1 +1,19 @@
-hahooooooooooo
+======
+abandi
+======
+
+
+Installation
+------------
+
+The easiest way to get abandi is if you have setuptools_ installed::
+
+	easy_install abandi
+
+Without setuptools, it's still pretty easy. Download the abandi.tgz file from 
+`abandi's Cheeseshop page`_, untar it and run::
+
+	python setup.py install
+
+.. _abandi's Cheeseshop page: http://pypi.python.org/pypi/abandi/
+.. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall

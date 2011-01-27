@@ -1,5 +1,6 @@
-from path import path
+from abandi import version, downloader
 from abandi.cli import call
+from path import path
 from yapsy.IPlugin import IPlugin
 import logging
 
@@ -54,13 +55,13 @@ class scummvm(IPlugin):
                 files[0].copy(t1)
                 files[1].copy(t2)
             else:
-            for i in [1, 2]:
-                t = dir / (trg % (i))
-                if not t.exists():
-                    for s in files:
-                        if str(i) in s:
-                            s.copy(t)
-                            break
+                for i in [1, 2]:
+                    t = dir / (trg % (i))
+                    if not t.exists():
+                        for s in files:
+                            if str(i) in s:
+                                s.copy(t)
+                                break
 
         if game.scummvm_id == "maniac":
             # http: # wiki.scummvm.org / index.php / Datafiles
@@ -101,12 +102,15 @@ class scummvm(IPlugin):
         if not self.gameMap:
             (stdout, _, _) = call('scummvm --list-games')
             self.gameMap = self.extractGameMap(stdout)
+            self.gameMap.update({'gobliiins':'gob','gobliins':'gob','goblins':'gob',})
         return self.gameMap
 
     def findInList(self, name, gmap):
         sdict = dict([(self.simplifyText(x), x) for x in gmap.keys()])
         skeys = sdict.keys()
         sname = self.simplifyText(name)
+        if not sname:
+            return
         ls = []
         if not len(ls):        
             for k in skeys:
@@ -118,7 +122,7 @@ class scummvm(IPlugin):
 #                    ls.append(k)
         if not len(ls):        
             for k in skeys:
-                if k in sname:
+                if len(k)>4 and k in sname:
                     ls.append(k)
         if not len(ls):        
             for k in skeys:
@@ -141,13 +145,17 @@ class scummvm(IPlugin):
             return sdict[ls[0]]
 
     def scummvm_id(self, game):
-        goblins = "gobliiins,gobliins,goblins".split(",")
+#        goblins = "gobliiins,gobliins,goblins".split(",")
         code = None
         name = game.name.lower()
-        for g in goblins:
-            if g in name:
-                code = "gob"
-
+#        for g in goblins:
+#            if g in name:
+#                code = "gob"
+        no_words='ghost preview'.split()
+        for x in no_words:
+            if x in name:
+                assert 0, 'scummvm code not found for:' + name
+            
         if not code:
             if 'kyrandia' in name:
                 if 'hand' in name:
@@ -168,15 +176,17 @@ class scummvm(IPlugin):
 
 
     def simplifyText(self, txt):
-        ignored_words = 'the of s a and 1 2 3 i ii iii'.split()
+        ignored_words = 'the of s a and i ii iii'.split()
+        ignored_chars = '0123456789'
         txt = txt.lower()
+        txt = ''.join(map(lambda x : x if x not in ignored_chars else ' ', txt))
         txt = ''.join(map(lambda x : x if x.isalnum() else ' ', txt))
         
         words = txt.split()
         words = filter(lambda x: x not in ignored_words, words)
         
         txt = ' '.join(words)
-        return txt
+        return txt.strip()
 
 
     def downloadSupportFiles(self, game):

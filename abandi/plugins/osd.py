@@ -43,16 +43,16 @@ class Osd(IPlugin):
         game.programmer = (self.getTextWith(texts, "Maker:"))
 
         images = parser.getImages()
-        game.screenshotUrls = []
+        game.screenshot_url_list = []
         for image in images   :
             if "/screens/" in image     :
-                game.screenshotUrls.append(image)
-        game.screenshotUrls = '|'.join(game.screenshotUrls)
+                game.screenshot_url_list.append(image)
+        game.screenshot_url_list = '|'.join(game.screenshot_url_list)
 
         links = parser.getLinks()
         for link in links   :
             if (link.endswith(".zip"))     :
-                game.gameFileURL = (link)
+                game.game_file_url = (link)
                 break
         game.platform = 'dos'
 

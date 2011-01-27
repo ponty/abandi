@@ -5,7 +5,7 @@ import cli4func
 import db
 import extract_id
 import logging
-import time
+import time, sys
 
 
 def update(source, id, force=False):
@@ -34,28 +34,30 @@ def update_game(source, id, force=False, sleep_between_downloads=0):
     if not force:
         game = db.load_game_by_key(source, id, ignore_empty=False)
         if game:
-            print 'up-to-date %s/%d..' % (source, int(id))
+            print 'up-to-date %s/%d...' % (source, int(id))
             return game
     else:
         print 'force',
-    print 'updating %s/%d..' % (source, int(id))
-    
+    print 'updating %s/%d...' % (source, int(id)),
+    sys.stdout.flush()
+
     if sleep_between_downloads:
-        logging.debug( 'sleeping %s sec..' % sleep_between_downloads)
+        logging.debug( 'sleeping %s sec...' % sleep_between_downloads)
+        sys.stdout.flush()
         time.sleep(sleep_between_downloads)
-    
+
     game = parse_game(source, id)
     if game:
-        print '\t\t\t..found:"' + game.name + '"..',
+        print 'found:"' + game.name + '"...',
         db.save_game(game)
     else:
-        print '\t\t\t..no game found..',
+        print 'no game found...',
         g=Game()
         g.source=source
         g.id=id
         db.save_game(g)
-        
-    print '..OK'
+
+    print 'OK'
     return game
 
 cli4func.main(update)

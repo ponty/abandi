@@ -50,7 +50,7 @@ class Abandonia(IPlugin):
         #game.programmer =
         #game.setSize(parser.getTextAfter("Size:"));
         game.publisher = parser.getTextAfter("publisher")
-        game.screenshotUrls = '|'.join(self.selectScreenshots(parser.getImages(), game.id))
+        game.screenshot_url_list = '|'.join(self.selectScreenshots(parser.getImages(), game.id))
         if "bootdisk" in parser.getImages():
             game.platform = 'dos'
         elif "dosbox" in parser.getImages():
@@ -80,5 +80,5 @@ class Abandonia(IPlugin):
     def game_file_url(self, game):
         parent = "http://www.abandonia.com/en/downloadgame/" + str(game.id) + "/index.html"
         parser = WebParser.WebParser(parent, cached=False)
-        gameFileUrl = parser.getFirstLink(".*files.abandonia.com.*")
-        return gameFileUrl
+        game_file_url = parser.getFirstLink(".*files.abandonia.com.*")
+        return game_file_url
