@@ -27,7 +27,7 @@ class urllib (IPlugin):
         if useSessionCookie:
             parent = urllib2.urlopen(referer)
             cookie = parent.info()['set-cookie']
-            print cookie
+            #print cookie
         
         req = urllib2.Request(url)
         if referer:

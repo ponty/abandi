@@ -1,5 +1,3 @@
-abandonware game installer
-
 Copyright (c) 2011, ponty
 All rights reserved.
 

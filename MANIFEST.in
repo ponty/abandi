@@ -8,3 +8,5 @@ include bootstrap.py
 
 recursive-include docs *
 prune docs/_build
+
+recursive-include abandi/plugins *.ini

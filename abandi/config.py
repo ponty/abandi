@@ -3,7 +3,7 @@ from abandi.path import path
 
 # plugins
 #htmlparsers_places=["plugins"]
-htmlparsers=['soup','lxml','soup'] # lxml is faster
+htmlparsers=['lxml','soup'] # lxml is faster
 downloaders_nocache=['urllib','curl']
 downloaders_cache=['cache']
 unpackers=['allunpacker', 'p7zip','unrar']

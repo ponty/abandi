@@ -2,10 +2,14 @@
 abandi
 ======
 
-abandonware game installer and runner
+Console-based abandonware game installer and runner.
+No GUI.
+Games are downloaded over internet.
 
 Basic usage
 ------------
+The selected game will be downloaded,
+unpacked and started by an emulator.
 
 if you know the id::
 

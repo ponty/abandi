@@ -7,7 +7,7 @@ class Gamebase64(IPlugin):
 
     long_name='Gamebase 64'
     homepage='http://www.gamebase64.com'
-    max_game_id=10000
+    max_game_id=22000
     platforms = ['c64']
 
 

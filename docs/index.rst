@@ -10,6 +10,8 @@ Contents:
     usage
     changes
     help
+    info
+    related
 
 Indices and tables
 ==================
