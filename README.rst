@@ -32,13 +32,13 @@ if you have an up-to-date database::
 Installation
 ------------
 
-The easiest way to get abandi is if you have pip_ installed::
+The easiest way to get abandi is if you have _setuptools installed::
 
-    pip install https://github.com/ponty/abandi/zipball/master
     easy_install https://github.com/ponty/abandi/zipball/master
 
-(pip_ install with setuptools_: ``easy_install pip``)
+or if you have pip_ installed::
 
+    pip install https://github.com/ponty/abandi/zipball/master
 
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
