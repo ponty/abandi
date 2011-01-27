@@ -38,7 +38,7 @@ install_requires = [
     'path.py',
 #    'patool',  # install not working
 
-    'lxml',
+#    'lxml',    # gcc install..
     'BeautifulSoup',
     ]
 
