@@ -40,9 +40,9 @@ def find_runner_plugin(game):
         logging.debug(p.name + ' platforms:' + str(p.platforms))
         if game.platform in p.platforms:
             if check_emulator(p):
-                if hasattr(p, 'test_game'):
-                    logging.debug('test_game()' )
+                if hasattr(p, 'can_run_game'):
                     ok=p.test_game(game)
+                    logging.debug('can_run_game()='+str(bool(ok)) )
                 else:
                     ok=1
                 if ok:
