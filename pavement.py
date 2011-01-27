@@ -35,7 +35,7 @@ install_requires = [
     # -*- Install requires: -*-
     'setuptools',
     'yapsy',
-    'patool',
+#    'patool',  # install not working
 
     ]
 
