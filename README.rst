@@ -8,7 +8,7 @@ Games are downloaded over internet.
 
 source: https://github.com/ponty/abandi
 
-documentation: https://ponty.github.com/abandi
+documentation: http://ponty.github.com/abandi
 
 Basic usage
 ------------
