@@ -38,6 +38,8 @@ install_requires = [
     'path.py',
 #    'patool',  # install not working
 
+    'lxml',
+    'BeautifulSoup',
     ]
 
 entry_points = """
