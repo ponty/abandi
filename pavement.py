@@ -40,6 +40,7 @@ install_requires = [
 
 #    'lxml',    # gcc install..
     'BeautifulSoup',
+    'argparse',
     ]
 
 entry_points = """
@@ -100,6 +101,21 @@ if ALL_TASKS_LOADED:
     @needs('generate_setup', 'minilib', 'setuptools.command.sdist')
     def sdist():
         """Overrides sdist to make sure that our setup.py is generated."""
+
+@task
+def pychecker():
+    sh('pychecker --stdlib --only --limit 100 abandi/*.py abandi/plugins/*.py')
+
+@task
+def findimports():
+    '''list external imports'''
+    sh('findimports abandi |grep -v ":"|grep -v abandi|sort|uniq')
+
+@task
+def pyflakes():
+    sh('pyflakes abandi')
+
+
 
 
 def sh2(c, s):

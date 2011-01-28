@@ -10,7 +10,7 @@ def search_games(where='', orderby='name'):
     games = db.load_games(where, orderby)
     return games
 
-def search(columns='[source id platform] name', where='', orderby='name', name='', platform='', source='', runner=''):
+def search(col_format='[source id platform] name', where='', orderby='name', name='', platform='', source='', runner=''):
     ''' search in game database
 
     :param where:     SQL where, e.g. "id>5 and name like falcon"
@@ -34,13 +34,14 @@ def search(columns='[source id platform] name', where='', orderby='name', name='
     if runner:
         games = search_for_runner(runner, games)
     logging.debug(str(games))
-    game.print_games(games, columns)
+    game.print_games(games, col_format)
     return games
 
 def search_for_runner(runner_name, games):
     '''
     '''
     r = runner.Runner(runner_name)
+    #print runner_name
     games = filter(lambda x:x.platform in r.platforms, games)
     if hasattr(r, 'can_run_game'):
         games = filter(lambda x:r.can_run_game(x), games)
