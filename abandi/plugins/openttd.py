@@ -1,5 +1,3 @@
-from abandi import cli
-from abandi.cli import call
 from path import path
 from yapsy.IPlugin import IPlugin
 

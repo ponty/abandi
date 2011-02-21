@@ -13,4 +13,6 @@ def convertToFileName( url):
     fileName = fileName.replace("&", "_")
     fileName = fileName.replace("(", "_")
     fileName = fileName.replace(")", "_")
+    fileName = fileName.replace("'", "_")
+    fileName = fileName.replace('"', "_")
     return fileName

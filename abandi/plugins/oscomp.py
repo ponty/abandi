@@ -19,7 +19,7 @@ class Oscomp(IPlugin):
 
         url = self.getGameHomePage(id)
         parser = WebParser.WebParser(url)
-        game.homePageURL = url
+        game.home_url = url
         game.source = self.name
         self.parse(game, parser)
 
@@ -68,5 +68,5 @@ class Oscomp(IPlugin):
         return url
 
     def download_options(self, game):
-        downloadOptions = dict(useSessionCookie=True, referer=game.homePageURL)
+        downloadOptions = dict(useSessionCookie=True, referer=game.home_url)
         return downloadOptions

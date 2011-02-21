@@ -1,6 +1,8 @@
-from abandi.cli import call
 from abandi.exefinder import searchExe
+from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
+
+EasyProcess('x64 -h').check()
 
 class Vice(IPlugin):
     hook = 'runner'
@@ -12,10 +14,8 @@ class Vice(IPlugin):
     ubuntu_package = 'vice'
 
     def run_game(self, game):
-        call('x64 %s' % searchExe(game.dir, game.name, self.extensions))
+        EasyProcess('x64 %s' % searchExe(game.dir, game.name, self.extensions)).call()
     def version(self):
         ''' no switch for version
         '''
-        (stdout, stderr,_) = call('x64 -h')
-        v =  None if stderr.strip() else 'unknown'
-        return v
+        return 'unknown'

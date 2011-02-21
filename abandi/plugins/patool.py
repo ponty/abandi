@@ -1,5 +1,7 @@
-from abandi import cli
+from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
+
+EasyProcess('patool').check()
 
 class patool(IPlugin):
     hook = 'unpacker'
@@ -7,10 +9,8 @@ class patool(IPlugin):
     def unpack(self, zip, target_dir):
         ''' patool should be installed
         '''
-        (_, _, r) = cli.call('patool extract {0} --outdir {1}'.format(zip,target_dir))
-        return r==0
+        p = EasyProcess(['patool', 'extract', zip, '--outdir', target_dir]).call()
+        return p.return_code==0
 
     def version(self):
-        (stdout,stderr, _) =cli.call('patool')
-        if not stderr.split():
-            return 'unknown'
+        return 'unknown'

@@ -29,7 +29,7 @@ class Abandonia(IPlugin):
         if 'protected' in all_images.lower():
             return None
 
-        game.homePageURL = url
+        game.home_url = url
         game.source = self.name
         self.parse(game, parser)
         if not game:

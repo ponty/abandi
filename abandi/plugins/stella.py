@@ -1,8 +1,9 @@
 from abandi import version
-from abandi.cli import call
 from abandi.exefinder import searchExe
+from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
 
+EasyProcess('stella -help').check()
 
 
 class Stella(IPlugin):
@@ -15,7 +16,6 @@ class Stella(IPlugin):
     ubuntu_package='stella'
 
     def run_game(self,game):
-        (stdout,stderr,_) =call('stella %s' % searchExe(game.dir, game.name, self.extensions))
+        EasyProcess('stella %s' % searchExe(game.dir, game.name, self.extensions)).call()
     def version(self):
-        (stdout,stderr,_) =call('stella -help')
-        return version.extract_version(stdout)
+        return version.extract_version(EasyProcess('stella -help').call().stdout)

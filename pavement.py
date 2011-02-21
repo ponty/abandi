@@ -15,11 +15,20 @@ except ImportError, e:
     debug(str(e))
     ALL_TASKS_LOADED = False
 
+NAME = 'abandi'
+PACKAGE = 'abandi'
+URL = 'https://github.com/ponty/abandi'
+DESCRIPTION = 'abandonware game installer'
 
-sys.path.append(path('.').abspath())
-import abandi
-version = abandi.__version__
-#version = '0.1.0'
+
+__version__ = None
+py = path('.') / PACKAGE / '__init__.py'
+for line in open(py).readlines():
+    if '__version__' in line:
+        exec line
+        break
+assert __version__    
+version = __version__
 
 classifiers = [
     # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -41,6 +50,7 @@ install_requires = [
 #    'lxml',    # gcc install..
     'BeautifulSoup',
     'argparse',
+    'EasyProcess',
     ]
 
 entry_points = """
@@ -49,15 +59,15 @@ entry_points = """
 
 # compatible with distutils of python 2.3+ or later
 setup(
-    name='abandi',
+    name=NAME,
     version=version,
-    description='abandonware game installer',
+    description=DESCRIPTION,
     long_description=open('README.rst', 'r').read(),
     classifiers=classifiers,
     keywords='abandonware game install',
     author='ponty',
     #author_email='zy@gmail.com',
-    url='',
+    url=URL,
     license='BSD',
     packages=find_packages(exclude=['bootstrap', 'pavement', ]),
     include_package_data=True,
@@ -94,7 +104,7 @@ options(
     )
 
 options.setup.package_data = paver.setuputils.find_package_data(
-    'abandi', package='abandi', only_in_packages=False)
+    PACKAGE, package=PACKAGE, only_in_packages=False)
 
 if ALL_TASKS_LOADED:
     @task
@@ -103,30 +113,55 @@ if ALL_TASKS_LOADED:
         """Overrides sdist to make sure that our setup.py is generated."""
 
 @task
+def html():
+    '''-E rebuild'''
+    sh('sphinx-build  -E -b html -d docs/_build/doctrees docs/ docs/_build/html')
+
+@task
 def pychecker():
-    sh('pychecker --stdlib --only --limit 100 abandi/*.py abandi/plugins/*.py')
+    sh('pychecker --stdlib --only --limit 100 {package}/ {package}/plugins/*.py'.format(package=PACKAGE))
 
 @task
 def findimports():
     '''list external imports'''
-    sh('findimports abandi |grep -v ":"|grep -v abandi|sort|uniq')
+    sh('findimports {package} |grep -v ":"|grep -v {package}|sort|uniq'.format(package=PACKAGE))
 
 @task
 def pyflakes():
-    sh('pyflakes abandi')
+    sh('pyflakes {package}'.format(package=PACKAGE))
+
+@task
+def nose():
+    sh('nosetests --with-xunit --verbose')
+
+@task
+def sloccount():
+    sh('sloccount --wide --details {package} tests > sloccount.sc'.format(package=PACKAGE))
+
+@task
+def clean():
+    root=path(__file__).dirname().abspath()
+    ls=[]
+    dls=[]
+    ls+=root.walkfiles('*.pyc')
+    ls+=root.walkfiles('*.html')
+    ls+=root.walkfiles('*.zip')
+    ls+=root.walkfiles('*.css')
+    ls+=root.walkfiles('*.png')
+    ls+=root.walkfiles('*.doctree')
+    ls+=root.walkfiles('*.pickle')
+
+    dls+=[root / 'dist']
+    dls+=root.listdir('*.egg-info')
+
+    for x in ls:
+        x.remove()
+    for x in dls:
+        x.rmtree()
+
+@task
+@needs('sloccount', 'html', 'sdist', 'nose')
+def hudson():
+    pass
 
 
-
-
-def sh2(c, s):
-    c.outl('')
-    c.outl('::')
-    c.outl('')
-    c.outl('\t$ ' + s)
-    output = subprocess.Popen(s, stdout=subprocess.PIPE, shell=1).communicate()[0]
-    for x in output.splitlines():
-        c.outl('\t' + x)
-    c.outl('')
-    c.outl('..')
-
-__builtins__['sh2'] = sh2

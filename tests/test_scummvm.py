@@ -140,6 +140,8 @@ Waxworks
 Elvira - Mistress of the Dark
 Big Red Adventure, The
 Nippon Safes, Inc.
+Future Wars|cine
+Future Wars - Time Travellers|cine
 '''.strip().splitlines()
 yes=dict([(x.split('|')+[''])[0:2] for x in yes])
 
@@ -175,23 +177,24 @@ class dummy:
 class TestScummvm(unittest.TestCase):
 
     def setUp(self):
-        self.seq = range(10)
+        #self.seq = range(10)
+        pass
 
     def test_no(self):
+        r=Runner('scummvm')
         for x in no:
-            print x
+            #print x
             g = dummy()
             g.name = x
-            r=Runner('scummvm')
             #r.scummvm_id(g)
             self.assertRaises(AssertionError, r.scummvm_id, g)
     
     def test_yes(self):
+        r=Runner('scummvm')
         for x in yes.keys():
-            print x
+            #print x
             g = dummy()
             g.name = x
-            r=Runner('scummvm')
             id=r.scummvm_id(g)
             if yes.get(x):
                 self.assertEquals(id, yes.get(x))

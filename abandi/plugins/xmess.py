@@ -1,5 +1,4 @@
 from abandi import version
-from abandi.cli import call
 from abandi.exefinder import searchExe
 from yapsy.IPlugin import IPlugin
 

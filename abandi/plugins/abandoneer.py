@@ -21,7 +21,7 @@ class Abandoneer(IPlugin):
         if not url:
             return None
         parser = WebParser.WebParser(url)
-        game.homePageURL = url
+        game.home_url = url
         game.source = self.name
         self.parse(game, parser)
         if not game:

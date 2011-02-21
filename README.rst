@@ -32,7 +32,7 @@ if you have an up-to-date database::
 Installation
 ------------
 
-The easiest way to get abandi is if you have _setuptools installed::
+The easiest way to get abandi is if you have setuptools_ installed::
 
     easy_install https://github.com/ponty/abandi/zipball/master
 
@@ -40,6 +40,13 @@ or if you have pip_ installed::
 
     pip install https://github.com/ponty/abandi/zipball/master
 
+Uninstall::
+	
+	# as root
+    pip uninstall abandi
+    
+    # database, games
+    rm -r ~/.abandi
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/

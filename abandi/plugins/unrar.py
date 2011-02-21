@@ -1,5 +1,9 @@
-from abandi import cli, version
+from abandi import version
+from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
+
+# TODO: other method
+#EasyProcess('unrar').check()
 
 class Unrar(IPlugin):
     hook = 'unpacker'
@@ -7,12 +11,8 @@ class Unrar(IPlugin):
     def unpack(self, zip, target_dir):
         ''' unrar should be installed
         '''
-        (stdout, _,_) = cli.call('unrar x -y {0} {1}'.format(zip,target_dir))
-        ok = 'All OK'.lower() in stdout.lower()
-        msg = None
-        if not ok:
-            msg = stdout
-        return msg
+        p = EasyProcess('unrar x -y {0} {1}'.format(zip,target_dir)).call()
+        if p.return_code:
+            return p.stdout
     def version(self):
-        (stdout,stderr,_) =cli.call('unrar')
-        return version.extract_version(stdout)
+        return version.extract_version(EasyProcess('unrar').call().stdout)

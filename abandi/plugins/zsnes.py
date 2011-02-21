@@ -1,9 +1,10 @@
 from abandi import version
-from abandi.cli import call
 from abandi.exefinder import searchExe
+from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
 
 
+EasyProcess('zsnes -?').check()
 
 class zsnes(IPlugin):
     hook = 'runner'
@@ -18,10 +19,8 @@ class zsnes(IPlugin):
     ubuntu_package='zsnes'
 
     def run_game(self,game):
-        (stdout,stderr,_) =call('zsnes "%s"' % searchExe(game.dir, game.name, self.extensions))
+        EasyProcess('zsnes "%s"' % searchExe(game.dir, game.name, self.extensions)).call()
     def version(self):
         ''' no switch for version
         '''
-        (stdout, stderr,_) = call('zsnes -?')
-        v =  None if stderr.strip() else 'unknown'
-        return v
+        return 'unknown'

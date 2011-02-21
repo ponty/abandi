@@ -1,4 +1,4 @@
-from abandi import cli, unpacker
+from abandi import unpacker
 from yapsy.IPlugin import IPlugin
 
 class Allunpacker(IPlugin):

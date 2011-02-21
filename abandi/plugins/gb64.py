@@ -53,7 +53,7 @@ class Gamebase64(IPlugin):
 
         url = self.getGameHomePage(id)
         parser = WebParser.WebParser(url)
-        game.homePageURL = url
+        game.home_url = url
         game.source = self.name
         self.parseLinks(game, parser)
 

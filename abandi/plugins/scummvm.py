@@ -1,8 +1,10 @@
 from abandi import version, downloader
-from abandi.cli import call
+from easyprocess import EasyProcess
 from path import path
 from yapsy.IPlugin import IPlugin
 import logging
+
+EasyProcess('scummvm -v').check()
 
 
 KYRA_DAT_URL = "https://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-0-13-0/dists/engine-data/kyra.dat"
@@ -31,7 +33,7 @@ class scummvm(IPlugin):
         game_dir = path(game.dir)
         if not len(game_dir.files()):
             game_dir = game_dir.dirs()[0]
-        (stdout, _, _) = call('scummvm -p %s %s' % (game_dir, game.scummvm_id))
+        EasyProcess('scummvm -p %s %s' % (game_dir, game.scummvm_id)).call()
 
     def can_run_game(self, game):
         ok = False
@@ -42,8 +44,7 @@ class scummvm(IPlugin):
         return ok
     
     def version(self):
-        (stdout, _, _) = call('scummvm -v')
-        return version.extract_version(stdout)
+        return version.extract_version(EasyProcess('scummvm -v').call().stdout)
 
     def do_copy(self, game):
         dir = path(game.dir)
@@ -101,7 +102,7 @@ class scummvm(IPlugin):
 
     def getGameListInt(self):
         if not self.gameMap:
-            (stdout, _, _) = call('scummvm --list-games')
+            stdout = EasyProcess('scummvm --list-games').call().stdout
             self.gameMap = self.extractGameMap(stdout)
             self.gameMap.update({'gobliiins':'gob','gobliins':'gob','goblins':'gob',})
         return self.gameMap
@@ -165,6 +166,8 @@ class scummvm(IPlugin):
                     code = "kyra3"
                 else:
                     code = "kyra1"
+            if 'future wars' in name:
+                code = "cine"
                   
         if not code:
             # String search = simplifyText(name)

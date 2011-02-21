@@ -1,8 +1,10 @@
-from abandi import cli, version
-from abandi.cli import call
+from abandi import version
 from abandi.exefinder import searchExe
+from easyprocess import EasyProcess
 from os.path import dirname, basename
 from yapsy.IPlugin import IPlugin
+
+EasyProcess('dosbox -version').check()
 
 class Dosbox(IPlugin):
     hook='runner'
@@ -17,7 +19,6 @@ class Dosbox(IPlugin):
         gameExe = searchExe(game.dir, game.name, self.extensions)
         vars = (dirname(gameExe), basename(gameExe))
         command = 'dosbox -c "mount c %s" -c c: -c %s' % vars
-        cli.call(command)
+        EasyProcess(command).call()
     def version(self):
-        (stdout,stderr,_) =call('dosbox -version')
-        return version.extract_version(stdout)
+        return version.extract_version(EasyProcess('dosbox -version').call().stdout)
