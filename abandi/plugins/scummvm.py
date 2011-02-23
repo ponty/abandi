@@ -3,16 +3,17 @@ from easyprocess import EasyProcess
 from path import path
 from yapsy.IPlugin import IPlugin
 import logging
+import os
 
 EasyProcess('scummvm -v').check()
 
 
-KYRA_DAT_URL = "https://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-0-13-0/dists/engine-data/kyra.dat"
+KYRA_DAT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/kyra.dat"
 KYRA_DAT = "kyra.dat"
-LURE_DAT_URL = "https://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-0-13-0/dists/engine-data/lure.dat"
+LURE_DAT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/lure.dat"
 LURE_DAT = "lure.dat"
+SKY_CPT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/sky.cpt"
 SKY_CPT = "sky.cpt"
-SKY_CPT_URL = "https://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-0-13-0/dists/engine-data/sky.cpt"
 
 class scummvm(IPlugin):
     hook = 'runner'
@@ -33,7 +34,8 @@ class scummvm(IPlugin):
         game_dir = path(game.dir)
         if not len(game_dir.files()):
             game_dir = game_dir.dirs()[0]
-        EasyProcess('scummvm -p %s %s' % (game_dir, game.scummvm_id)).call()
+        options = os.environ.get('ABANDI_SCUMMVM_OPTIONS', '')
+        EasyProcess('scummvm -p %s %s %s' % (game_dir,  options, game.scummvm_id)).call()
 
     def can_run_game(self, game):
         ok = False
@@ -203,7 +205,7 @@ class scummvm(IPlugin):
         elif code == "lure":
             url = LURE_DAT_URL
             file = LURE_DAT
-        elif code == "kyra1":
+        elif code.startswith("kyra"):
             url = KYRA_DAT_URL
             file = KYRA_DAT
 

@@ -44,28 +44,28 @@ run galaga_ by id:
 .. program-screenshot:: python -m abandi.run -a gb64 3020
     :prompt:
     :scale: 50 %
-    :wait: 30
+    :timeout: 30
 
 run galaga_ by name:
 
 .. program-screenshot:: python -m abandi.srun -a --name galaga
     :prompt:
     :scale: 50 %
-    :wait: 10
+    :timeout: 30
 
 run `maniac mansion`_ using vice_:
 
 .. program-screenshot:: python -m abandi.run -a gb64 4577 --runner vice
     :prompt:
     :scale: 50 %
-    :wait: 30
+    :timeout: 30
 
 run `maniac mansion`_ using scummvm_:
 
 .. program-screenshot:: python -m abandi.run -a gb64 4577 --runner scummvm
     :prompt:
     :scale: 50 %
-    :wait: 10
+    :timeout: 30
 
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/
