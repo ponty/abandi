@@ -45,6 +45,7 @@ run galaga_ by id:
     :prompt:
     :scale: 50 %
     :timeout: 30
+    :wait: 5
 
 run galaga_ by name:
 
@@ -52,6 +53,7 @@ run galaga_ by name:
     :prompt:
     :scale: 50 %
     :timeout: 30
+    :wait: 5
 
 run `maniac mansion`_ using vice_:
 
@@ -59,6 +61,7 @@ run `maniac mansion`_ using vice_:
     :prompt:
     :scale: 50 %
     :timeout: 30
+    :wait: 5
 
 run `maniac mansion`_ using scummvm_:
 

@@ -1,14 +1,14 @@
-.. include:: ../README.rst
+abandi is abandonware installer
 
 Contents:
 
 .. toctree::
     :maxdepth: 2
 
+    readme
     depe
     source
     usage
-    changes
     help
     info
     related

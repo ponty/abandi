@@ -1,9 +1,4 @@
-======
-abandi
-======
-
 Console-based abandonware game installer and runner.
-No GUI.
 Games are downloaded over internet.
 
 source: https://github.com/ponty/abandi
@@ -32,7 +27,7 @@ if you have an up-to-date database::
 Installation
 ------------
 
-The easiest way to get abandi is if you have setuptools_ installed::
+if you have setuptools_ installed::
 
     easy_install https://github.com/ponty/abandi/zipball/master
 
