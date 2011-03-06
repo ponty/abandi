@@ -61,6 +61,8 @@ class Gamebase64(IPlugin):
 
         if not game or not game.name or "Banner Exchange" in game.name:
             return None
+        if not game.game_file_url:
+            return None
 
         game.platform = 'c64'
         return game

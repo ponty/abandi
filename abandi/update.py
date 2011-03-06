@@ -43,7 +43,7 @@ def update_game(source, id, force=False, sleep_between_downloads=0):
     sys.stdout.flush()
 
     if sleep_between_downloads:
-        logging.debug( 'sleeping %s sec...' % sleep_between_downloads)
+        print  'sleeping %s sec...' % sleep_between_downloads,
         sys.stdout.flush()
         time.sleep(sleep_between_downloads)
 

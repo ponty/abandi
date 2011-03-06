@@ -92,8 +92,8 @@ def save_game(game):
 
         for f in data_fields[n]:
             v=game.__dict__.get(f)
-            if v:
-                execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f,dbalias=dbalias)
+            #if v:
+            execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f,dbalias=dbalias)
                     , (v, game.id, game.source))
     doit('p',0)
 

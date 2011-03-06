@@ -33,8 +33,10 @@ class urllib (IPlugin):
         
         req = urllib2.Request(url)
         if referer:
+            logging.debug('referer:' + referer)
             req.add_header('Referer', referer)
         if cookie:
+            logging.debug('cookie:' + cookie)
             req.add_header('Cookie', cookie)
         
         f = urllib2.urlopen(req)
