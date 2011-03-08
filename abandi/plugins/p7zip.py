@@ -1,8 +1,8 @@
 from abandi import version
-from easyprocess import EasyProcess
+from easyprocess import Proc
 from yapsy.IPlugin import IPlugin
 
-EasyProcess('7z').check()
+Proc('7z').check()
 
 
 class P7zip(IPlugin):
@@ -11,9 +11,9 @@ class P7zip(IPlugin):
     def unpack(self, zip, target_dir):
         ''' 7z should be installed
         '''
-        p = EasyProcess('7z e -o' + target_dir + ' -r -y ' + zip).call()
+        p = Proc(['7z', 'e', '-o' + target_dir , '-r', '-y', zip]).call()
         if p.return_code:
             return p.stdout
 
     def version(self):
-        return version.extract_version(EasyProcess('7z').call().stdout)
+        return version.extract_version(Proc('7z').call().stdout)

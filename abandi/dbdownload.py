@@ -19,7 +19,11 @@ def dbdownload(url=default_url):
 
     print 'unpacking %s...' % f,
     sys.stdout.flush()
-    Unpacker('p7zip').unpack(f,config.ABANDI_HOME_DIR)
-    print 'OK'
+    error_text = Unpacker('p7zip').unpack(f,config.ABANDI_HOME_DIR)
+    if error_text:
+        print 'ERROR!'
+        print error_text
+    else:
+        print 'OK'
     
 cli4func.main(dbdownload)

@@ -7,18 +7,17 @@ from yapsy.IPlugin import IPlugin
 EasyProcess('dosbox -version').check()
 
 class Dosbox(IPlugin):
-    hook='runner'
+    hook = 'runner'
 
     long_name = 'DOSBox'
     home_url = 'http://www.dosbox.com/'
-    extensions=['exe','bat','com']
-    platforms=['dos']
-    ubuntu_package='dosbox'
+    extensions = ['exe', 'bat', 'com']
+    platforms = ['dos']
+    ubuntu_package = 'dosbox'
 
-    def run_game(self,game):
+    def run_game(self, game):
         gameExe = searchExe(game.dir, game.name, self.extensions)
-        vars = (dirname(gameExe), basename(gameExe))
-        command = 'dosbox -c "mount c %s" -c c: -c %s' % vars
+        command = ['dosbox', '-c', "mount c " + dirname(gameExe), '-c', 'c:', '-c', basename(gameExe)]
         EasyProcess(command).call()
     def version(self):
         return version.extract_version(EasyProcess('dosbox -version').call().stdout)

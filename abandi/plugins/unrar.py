@@ -11,7 +11,7 @@ class Unrar(IPlugin):
     def unpack(self, zip, target_dir):
         ''' unrar should be installed
         '''
-        p = EasyProcess('unrar x -y {0} {1}'.format(zip,target_dir)).call()
+        p = EasyProcess(['unrar', 'x', '-y', zip, target_dir]).call()
         if p.return_code:
             return p.stdout
     def version(self):

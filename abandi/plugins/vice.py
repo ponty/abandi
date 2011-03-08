@@ -14,7 +14,7 @@ class Vice(IPlugin):
     ubuntu_package = 'vice'
 
     def run_game(self, game):
-        EasyProcess('x64 %s' % searchExe(game.dir, game.name, self.extensions)).call()
+        EasyProcess(['x64', searchExe(game.dir, game.name, self.extensions)]).call()
     def version(self):
         ''' no switch for version
         '''

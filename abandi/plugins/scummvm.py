@@ -35,7 +35,8 @@ class scummvm(IPlugin):
         if not len(game_dir.files()):
             game_dir = game_dir.dirs()[0]
         options = os.environ.get('ABANDI_SCUMMVM_OPTIONS', '')
-        EasyProcess('scummvm -p %s %s %s' % (game_dir,  options, game.scummvm_id)).call()
+        #TODO: options split is not good
+        EasyProcess(['scummvm', '-p', game_dir] + options.split() + [ str(game.scummvm_id)]).call()
 
     def can_run_game(self, game):
         ok = False
@@ -106,7 +107,7 @@ class scummvm(IPlugin):
         if not self.gameMap:
             stdout = EasyProcess('scummvm --list-games').call().stdout
             self.gameMap = self.extractGameMap(stdout)
-            self.gameMap.update({'gobliiins':'gob','gobliins':'gob','goblins':'gob',})
+            self.gameMap.update({'gobliiins':'gob', 'gobliins':'gob', 'goblins':'gob', })
         return self.gameMap
 
     def findInList(self, name, gmap):
@@ -126,7 +127,7 @@ class scummvm(IPlugin):
 #                    ls.append(k)
         if not len(ls):        
             for k in skeys:
-                if len(k)>4 and k in sname:
+                if len(k) > 4 and k in sname:
                     ls.append(k)
         if not len(ls):        
             for k in skeys:
@@ -155,7 +156,7 @@ class scummvm(IPlugin):
 #        for g in goblins:
 #            if g in name:
 #                code = "gob"
-        no_words='ghost preview'.split()
+        no_words = 'ghost preview'.split()
         for x in no_words:
             if x in name:
                 assert 0, 'scummvm code not found for:' + name
