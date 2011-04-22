@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>command line help &mdash; abandi v0.0.4 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="abandi v0.0.4 documentation" href="index.html" />
+    <link rel="next" title="system information" href="info.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="info.html" title="system information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="command-line-help">
+<h1>command line help<a class="headerlink" href="#command-line-help" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dbdownload">
+<h2>dbdownload<a class="headerlink" href="#dbdownload" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.dbdownload --help
+usage: dbdownload.py [-h] [-u URL] [--debug]
+
+downloads and unpacks game database
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -u URL, --url URL  : packed sqlite file [default=https://github.com/download
+                     s/ponty/abandi/parsedb.sqlite.7z]
+  --debug            Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="parse">
+<h2>parse<a class="headerlink" href="#parse" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.parse --help
+usage: parse.py [-h] [--debug] source id
+
+parse game on source and print all information
+
+positional arguments:
+  source      : ['gb64',..]
+  id          : ['1',..]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --debug     Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="update">
+<h2>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.update --help
+usage: update.py [-h] [-f] [--debug] source id
+
+parse and update game in database
+
+positional arguments:
+  source       : ['all','gb64',..]
+  id           : ['all','1','1-5','1,5-8,10',..]
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -f, --force
+  --debug      Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="info">
+<h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.info --help
+usage: info.py [-h] [--debug] source id
+
+print all information for game in database
+
+positional arguments:
+  source      : ['gb64',..]
+  id          : ['1',..]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --debug     Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="search">
+<h2>search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.search --help
+usage: search.py [-h] [-c COLUMNS] [-w WHERE] [-o ORDERBY] [-n NAME]
+                 [-p PLATFORM] [-s SOURCE] [-r RUNNER] [--debug]
+
+search in game database
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c COLUMNS, --columns COLUMNS
+                        [default=[source id platform] name]
+  -w WHERE, --where WHERE
+                        : SQL where, e.g. "id&gt;5 and name like falcon"
+  -o ORDERBY, --orderby ORDERBY
+                        [default=name]
+  -n NAME, --name NAME  : game name like this
+  -p PLATFORM, --platform PLATFORM
+                        : check lsplatform for list
+  -s SOURCE, --source SOURCE
+                        : check lsplugin for list
+  -r RUNNER, --runner RUNNER
+  --debug               Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="install">
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.install --help
+usage: install.py [-h] [-d] [-u] [-r] [-n] [--debug] source id
+
+download and unpack game found in database
+
+positional arguments:
+  source              : ['gb64',..]
+  id                  : ['1',..]
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -d, --downloadonly
+  -u, --unpackonly
+  -r, --removezip
+  -n, --nocache
+  --debug             Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="run">
+<h2>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.run --help
+usage: run.py [-h] [-r RUNNER] [-a] [--debug] source id
+
+start game using selected emulator
+
+positional arguments:
+  source                : ['gb64',..]
+  id                    : ['1',..]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r RUNNER, --runner RUNNER
+                        : emulator ['auto','dosbox','scummvm',..]
+                        [default=auto]
+  -a, --auto-install
+  --debug               Set logging level to DEBUG</pre>
+</div>
+</div>
+<div class="section" id="srun">
+<h2>srun<a class="headerlink" href="#srun" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python -m abandi.srun --help
+usage: srun.py [-h] [-c COLUMNS] [-w WHERE] [-o ORDERBY] [-n NAME]
+               [-p PLATFORM] [-s SOURCE] [-r RUNNER] [-a] [-i INDEX] [--debug]
+
+search and run
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c COLUMNS, --columns COLUMNS
+                        [default=[source id platform] name]
+  -w WHERE, --where WHERE
+  -o ORDERBY, --orderby ORDERBY
+                        [default=name]
+  -n NAME, --name NAME
+  -p PLATFORM, --platform PLATFORM
+  -s SOURCE, --source SOURCE
+  -r RUNNER, --runner RUNNER
+                        [default=auto]
+  -a, --auto-install
+  -i INDEX, --index INDEX
+  --debug               Set logging level to DEBUG</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">command line help</a><ul>
+<li><a class="reference internal" href="#dbdownload">dbdownload</a></li>
+<li><a class="reference internal" href="#parse">parse</a></li>
+<li><a class="reference internal" href="#update">update</a></li>
+<li><a class="reference internal" href="#info">info</a></li>
+<li><a class="reference internal" href="#search">search</a></li>
+<li><a class="reference internal" href="#install">install</a></li>
+<li><a class="reference internal" href="#run">run</a></li>
+<li><a class="reference internal" href="#srun">srun</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="info.html"
+                        title="next chapter">system information</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/help.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="info.html" title="system information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             >previous</a> |</li>
+        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

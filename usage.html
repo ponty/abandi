@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; abandi v0.0.4 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="abandi v0.0.4 documentation" href="index.html" />
+    <link rel="next" title="command line help" href="help.html" />
+    <link rel="prev" title="game sources" href="source.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="help.html" title="command line help"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="source.html" title="game sources"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="update">
+<h2>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<p>update some games  in database from <a class="reference external" href="http://www.gamebase64.com">gamebase64</a></p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.update gb64 3020-3023 --force
+force updating gb64/3020... found:&quot;Galaga&quot;... OK
+force updating gb64/3021... sleeping 2 sec... found:&quot;Galaga&quot;... OK
+force updating gb64/3022... sleeping 2 sec... found:&quot;Galaxia 7&quot;... OK
+force updating gb64/3023... sleeping 2 sec... found:&quot;Galaxian&quot;... OK
+</pre></div>
+</div>
+<p>or download the default game database:</p>
+<div class="highlight-python"><pre>$ python -m abandi.dbdownload</pre>
+</div>
+</div>
+<div class="section" id="install">
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>install <a class="reference external" href="http://www.gamebase64.com/game.php?id=3020">galaga</a></p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.install gb64 3020
+downloading Galaga... OK
+unpacking Galaga... OK
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-database">
+<h2>check database<a class="headerlink" href="#check-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.info gb64 3020
+source:              gb64
+id:                  3020
+name:                Galaga
+platform:            c64
+game_file_url:       http://gamebase64.hardabasht.com/games/g/GALAGA1_03020_02.zip
+release_year:        None
+genre:               Shoot&#39;em Up - Space Invaders
+programmer:          Henrik Wening
+language:            English
+musician:            None
+publisher:           Henrik Wening
+home_url:            http://www.gamebase64.com/game.php?id=3020
+music_file_url:      None
+screenshot_url_list: http://www.gb64.com/Screenshots/G/Galaga_v1.png|http://www.gb64.com/Screenshots/G/Galaga_v1_1.png
+zip:                 /home/titi/.abandi/cache/gamezip/gb64/http___gamebase64.hardabasht.com_games_g_GALAGA1_03020_02.zip
+dir:                 /home/titi/.abandi/games/gb64/Galaga.3020
+</pre></div>
+</div>
+</div>
+<div class="section" id="search-database">
+<h2>search database<a class="headerlink" href="#search-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.search -n galaga
+[gb64 3020 c64] Galaga
+[gb64 3021 c64] Galaga
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-game">
+<h2>run game<a class="headerlink" href="#run-game" title="Permalink to this headline">¶</a></h2>
+<p>run <a class="reference external" href="http://www.gamebase64.com/game.php?id=3020">galaga</a> by id:</p>
+<div class="highlight-python"><pre>$ python -m abandi.run -a gb64 3020
+</pre>
+</div>
+<a class="reference internal image-reference" href="_images/screenshot_id0.png"><img alt="_images/screenshot_id0.png" src="_images/screenshot_id0.png" style="width: 384.0px; height: 304.0px;" /></a>
+<p>run <a class="reference external" href="http://www.gamebase64.com/game.php?id=3020">galaga</a> by name:</p>
+<div class="highlight-python"><pre>$ python -m abandi.srun -a --name galaga
+</pre>
+</div>
+<a class="reference internal image-reference" href="_images/screenshot_id1.png"><img alt="_images/screenshot_id1.png" src="_images/screenshot_id1.png" style="width: 384.0px; height: 304.0px;" /></a>
+<p>run <a class="reference external" href="http://www.gamebase64.com/game.php?id=4577">maniac mansion</a> using <a class="reference external" href="http://www.viceteam.org/">vice</a>:</p>
+<div class="highlight-python"><pre>$ python -m abandi.run -a gb64 4577 --runner vice
+</pre>
+</div>
+<a class="reference internal image-reference" href="_images/screenshot_id2.png"><img alt="_images/screenshot_id2.png" src="_images/screenshot_id2.png" style="width: 384.0px; height: 304.0px;" /></a>
+<p>run <a class="reference external" href="http://www.gamebase64.com/game.php?id=4577">maniac mansion</a> using <a class="reference external" href="http://www.scummvm.org/">scummvm</a>:</p>
+<div class="highlight-python"><pre>$ python -m abandi.run -a gb64 4577 --runner scummvm
+</pre>
+</div>
+<a class="reference internal image-reference" href="_images/screenshot_id3.png"><img alt="_images/screenshot_id3.png" src="_images/screenshot_id3.png" style="width: 320.0px; height: 200.0px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#update">update</a></li>
+<li><a class="reference internal" href="#install">install</a></li>
+<li><a class="reference internal" href="#check-database">check database</a></li>
+<li><a class="reference internal" href="#search-database">search database</a></li>
+<li><a class="reference internal" href="#run-game">run game</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="source.html"
+                        title="previous chapter">game sources</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="help.html"
+                        title="next chapter">command line help</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/usage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="help.html" title="command line help"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="source.html" title="game sources"
+             >previous</a> |</li>
+        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 d4280682c833ccd4bb6a1b08666d7d1380c2ba58 titi <titi@pince.(none)> 1300992098 +0100	clone: from git@github.com:ponty/abandi.git
+d4280682c833ccd4bb6a1b08666d7d1380c2ba58 d53dd7acbfcd9503c0c308650e25b8048eea491d titi <titi@pince.(none)> 1300992115 +0100	checkout: moving from master to gh-pages
+d53dd7acbfcd9503c0c308650e25b8048eea491d 0d45c422dfaa08117ba7d6c41266713b95c7395f titi <titi@pince.(none)> 1300992339 +0100	commit: doc update
