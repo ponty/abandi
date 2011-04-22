@@ -1,7 +1,9 @@
+from entrypoint2 import entrypoint
 from path import path
-import cli4func
 import logging
 
+
+@entrypoint
 def searchExe(dir, gamename, extensions):
     def exeFilter(name):
         return path(name).ext.lower().strip('.') in extensions
@@ -83,4 +85,3 @@ def excludeSetup(exeList):
             newList.append(file)
     return newList
 
-cli4func.main(searchExe)

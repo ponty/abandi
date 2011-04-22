@@ -1,5 +1,5 @@
 from abandi import runner
-import cli4func
+from entrypoint2 import entrypoint
 import db
 import game
 import logging
@@ -10,6 +10,8 @@ def search_games(where='', orderby='name'):
     games = db.load_games(where, orderby)
     return games
 
+
+@entrypoint
 def search(col_format='[source id platform] name', where='', orderby='name', name='', platform='', source='', runner=''):
     ''' search in game database
 
@@ -48,4 +50,3 @@ def search_for_runner(runner_name, games):
 
     return games
 
-cli4func.main(search)

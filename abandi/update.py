@@ -1,13 +1,15 @@
 from abandi.game import Game
 from abandi.game_source import GameSource, game_sources
+from entrypoint2 import entrypoint
 from parse import parse_game
-import cli4func
 import db
 import extract_id
-import logging
-import time, sys
+import time
+import sys
 
 
+
+@entrypoint
 def update(source, id, force=False):
     '''parse and update game in database
     :param source: ['all','gb64',..]
@@ -61,4 +63,3 @@ def update_game(source, id, force=False, sleep_between_downloads=0):
     print 'OK'
     return game
 
-cli4func.main(update)

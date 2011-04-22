@@ -1,5 +1,6 @@
-import cli4func
+from entrypoint2 import entrypoint
 
+@entrypoint
 def extract_version(txt):
     words = txt.replace(',', ' ').split()
     version=None
@@ -12,4 +13,3 @@ def extract_version(txt):
                 break
     return version
 
-cli4func.main(extract_version)

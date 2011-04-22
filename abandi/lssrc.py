@@ -1,7 +1,8 @@
 from abandi.game_source import game_sources
-import cli4func
 import operator
+from entrypoint2 import entrypoint
 
+@entrypoint
 def list_sources():
     ''' list runners found by yapsy
     '''
@@ -23,4 +24,3 @@ def list_sources():
 
 
 
-cli4func.main(list_sources)

@@ -1,12 +1,14 @@
 from abandi import config
 from abandi.downloader import Downloader
 from abandi.unpacker import Unpacker
-import cli4func
+from entrypoint2 import entrypoint
 import sys
 import tempfile
 
 default_url='https://github.com/downloads/ponty/abandi/parsedb.sqlite.7z'
 
+
+@entrypoint
 def dbdownload(url=default_url):
     '''downloads and unpacks game database
     :param url: packed sqlite file
@@ -26,4 +28,3 @@ def dbdownload(url=default_url):
     else:
         print 'OK'
     
-cli4func.main(dbdownload)

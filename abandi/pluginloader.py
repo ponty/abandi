@@ -1,7 +1,6 @@
 from abandi import config
 from path import path
 from yapsy.PluginManager import PluginManager
-import cli4func
 import logging
 
 def  plugin(name=None, **kw):
@@ -60,7 +59,3 @@ def plugins_unsorted(hook=None, places=None, ext='ini'):
         x.plugin_object.name = x.name
     return all
 
-def test():
-    pass
-
-cli4func.main(test)

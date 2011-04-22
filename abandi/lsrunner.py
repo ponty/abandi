@@ -1,10 +1,9 @@
-from path import path
-from abandi.pluginloader import plugins_unsorted
 from abandi.runner import runners
-import cli4func
-import logging
 import operator
 
+from entrypoint2 import entrypoint
+
+@entrypoint
 def list_runners():
     ''' list runners found by yapsy
     '''
@@ -24,5 +23,3 @@ def list_runners():
     return s
 
 
-
-cli4func.main(list_runners)

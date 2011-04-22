@@ -1,9 +1,8 @@
-from path import path
 from abandi.pluginloader import plugins_unsorted
-import cli4func
-import logging
 import operator
+from entrypoint2 import entrypoint
 
+@entrypoint
 def list_plugins():
     ''' list plugins found by yapsy
     '''
@@ -14,4 +13,3 @@ def list_plugins():
 
 
 
-cli4func.main(list_plugins)

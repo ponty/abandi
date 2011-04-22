@@ -1,11 +1,10 @@
-from path import path
 from abandi.pluginloader import plugins_unsorted
-import cli4func
-import logging
 import operator
 import platform
 import abandi
+from entrypoint2 import entrypoint
 
+@entrypoint
 def list_versions():
     ''' list plugin backend versions
     '''
@@ -25,4 +24,3 @@ def list_versions():
 
 
 
-cli4func.main(list_versions)

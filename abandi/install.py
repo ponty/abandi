@@ -3,12 +3,14 @@ from abandi.FileUtils import convertToFileName
 from abandi.downloader import Downloader
 from abandi.game_source import GameSource
 from abandi.update import update_game
-import cli4func
+from entrypoint2 import entrypoint
 import db
 import os
 import sys
 
 
+
+@entrypoint
 def install_game(source, id, downloadonly=False,
                   unpackonly=False,removezip=False,nocache=False):
     '''download and unpack game found in database
@@ -75,4 +77,3 @@ def unpack_game(game,removezip=False):
     db.save_game(game)
     return True
 
-cli4func.main(install_game)

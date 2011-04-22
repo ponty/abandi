@@ -1,4 +1,4 @@
-import cli4func
+from entrypoint2 import entrypoint
 import pluginloader
 
 def GameSource(name):
@@ -10,8 +10,9 @@ def game_sources():
     ls=pluginloader.plugins(hook='game_source')
     return [x.plugin_object for x in ls]
 
+
+@entrypoint
 def test():
     print GameSource('abandoneer')
     print game_sources()
 
-cli4func.main(test)

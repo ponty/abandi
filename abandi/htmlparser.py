@@ -1,4 +1,4 @@
-import cli4func
+from entrypoint2 import entrypoint
 import config
 import pluginloader
 
@@ -7,7 +7,8 @@ def HtmlParser(name=None):
     if x:
         return x.plugin_object
 
+
+@entrypoint
 def test():
     print HtmlParser()
 
-cli4func.main(test)

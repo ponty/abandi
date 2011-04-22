@@ -1,4 +1,3 @@
-import cli4func
 import config
 import pluginloader
 

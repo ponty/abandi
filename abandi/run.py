@@ -1,7 +1,7 @@
 from abandi import info
 from abandi.install import install_game
 from abandi.runner import runners, Runner
-import cli4func
+from entrypoint2 import entrypoint
 import logging
 import platform
 
@@ -9,20 +9,7 @@ message = '''Install the game first:
     install {source} {id}
 or run with auto-install:
     run -a {source} {id}'''
-def run_game(source, id, runner='auto', auto_install=False):
-    ''' start game using selected emulator
-    :param source: ['gb64',..]
-    :param id:     ['1',..]
-    :param runner: emulator ['auto','dosbox','scummvm',..]
-    '''
-    game = info.search_game(source, id)
-    if not game or not game.dir:
-        if auto_install:
-            game = install_game(source, id)
-        else:
-            print message.format(source=source, id=str(id))
-            return
-    run(game, runner)
+
 
 def check_emulator(p):
     logging.debug('checking version:'+ p.name)
@@ -69,4 +56,18 @@ def run(game, runner='auto'):
     p.run_game(game)
     return 1
 
-cli4func.main(run_game)
+@entrypoint
+def run_game(source, id, runner='auto', auto_install=False):
+    ''' start game using selected emulator
+    :param source: ['gb64',..]
+    :param id:     ['1',..]
+    :param runner: emulator ['auto','dosbox','scummvm',..]
+    '''
+    game = info.search_game(source, id)
+    if not game or not game.dir:
+        if auto_install:
+            game = install_game(source, id)
+        else:
+            print message.format(source=source, id=str(id))
+            return
+    run(game, runner)

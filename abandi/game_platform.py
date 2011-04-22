@@ -1,4 +1,3 @@
-import logging
 
 
 platform_dict = dict(
