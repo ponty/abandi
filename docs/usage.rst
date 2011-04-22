@@ -69,6 +69,7 @@ run `maniac mansion`_ using scummvm_:
     :prompt:
     :scale: 50 %
     :timeout: 30
+    :wait: 5
 
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/
