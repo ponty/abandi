@@ -1,4 +1,4 @@
-from abandi import version
+from easyprocess import extract_version
 from abandi.exefinder import searchExe
 from yapsy.IPlugin import IPlugin
 
@@ -16,4 +16,4 @@ from yapsy.IPlugin import IPlugin
 #        (stdout,stderr) =call('xmess %s' % searchExe(game.dir, game.name, self.extensions))
 #    def version(self):
 #        (stdout,stderr) =call('xmess -help')
-#        return version.extract_version(stdout)
+#        return extract_version(stdout)

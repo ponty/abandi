@@ -1,4 +1,4 @@
-from abandi import version
+from easyprocess import extract_version
 from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
 
@@ -15,4 +15,4 @@ class Unrar(IPlugin):
         if p.return_code:
             return p.stdout
     def version(self):
-        return version.extract_version(EasyProcess('unrar').call().stdout)
+        return extract_version(EasyProcess('unrar').call().stdout)

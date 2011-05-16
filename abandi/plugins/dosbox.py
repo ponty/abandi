@@ -1,4 +1,4 @@
-from abandi import version
+from easyprocess import extract_version
 from abandi.exefinder import searchExe
 from easyprocess import EasyProcess
 from os.path import dirname, basename
@@ -20,4 +20,4 @@ class Dosbox(IPlugin):
         command = ['dosbox', '-c', "mount c " + dirname(gameExe), '-c', 'c:', '-c', basename(gameExe)]
         EasyProcess(command).call()
     def version(self):
-        return version.extract_version(EasyProcess('dosbox -version').call().stdout)
+        return extract_version(EasyProcess('dosbox -version').call().stdout)

@@ -1,4 +1,4 @@
-from abandi import version
+from easyprocess import extract_version
 from abandi.exefinder import searchExe
 from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin
@@ -18,4 +18,4 @@ class Stella(IPlugin):
     def run_game(self, game):
         EasyProcess(['stella', searchExe(game.dir, game.name, self.extensions)]).call()
     def version(self):
-        return version.extract_version(EasyProcess('stella -help').call().stdout)
+        return extract_version(EasyProcess('stella -help').call().stdout)

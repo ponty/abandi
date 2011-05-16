@@ -1,4 +1,5 @@
-from abandi import version, downloader
+from easyprocess import extract_version
+from abandi import downloader
 from easyprocess import EasyProcess
 from path import path
 from yapsy.IPlugin import IPlugin
@@ -47,7 +48,7 @@ class scummvm(IPlugin):
         return ok
     
     def version(self):
-        return version.extract_version(EasyProcess('scummvm -v').call().stdout)
+        return extract_version(EasyProcess('scummvm -v').call().stdout)
 
     def do_copy(self, game):
         dir = path(game.dir)

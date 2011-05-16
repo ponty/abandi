@@ -1,4 +1,4 @@
-from abandi import version
+from easyprocess import extract_version
 from easyprocess import Proc
 from yapsy.IPlugin import IPlugin
 
@@ -16,4 +16,4 @@ class P7zip(IPlugin):
             return p.stdout
 
     def version(self):
-        return version.extract_version(Proc('7z').call().stdout)
+        return extract_version(Proc('7z').call().stdout)

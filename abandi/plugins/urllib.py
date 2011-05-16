@@ -2,12 +2,7 @@ from abandi import FileUtils
 from path import path
 from yapsy.IPlugin import IPlugin
 import logging
-#import tempfile
 import urllib2
-
-
-
-#last_call = dict()
 
 
 class urllib (IPlugin):
