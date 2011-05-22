@@ -53,7 +53,7 @@ run galaga_ by name:
     :prompt:
     :scale: 50 %
     :timeout: 30
-    :wait: 5
+    :wait: 10
 
 run `maniac mansion`_ using vice_:
 
@@ -61,7 +61,7 @@ run `maniac mansion`_ using vice_:
     :prompt:
     :scale: 50 %
     :timeout: 30
-    :wait: 5
+    :wait: 10
 
 run `maniac mansion`_ using scummvm_:
 
@@ -69,7 +69,7 @@ run `maniac mansion`_ using scummvm_:
     :prompt:
     :scale: 50 %
     :timeout: 30
-    :wait: 5
+    :wait: 10
 
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/
