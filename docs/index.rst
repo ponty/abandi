@@ -15,6 +15,7 @@ Contents:
     help
     info
     related
+    dev
 
 Indices and tables
 ==================

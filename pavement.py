@@ -109,7 +109,7 @@ if ALL_TASKS_LOADED:
     
     
     @task
-    @needs('sloccount', 'html', 'pdf', 'sdist', 'nose')
+    @needs('sloccount', 'cog', 'html', 'pdf', 'sdist', 'nose')
     def alltest():
         'all tasks to check'
         pass
