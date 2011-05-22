@@ -10,7 +10,6 @@ import sys
 
 
 
-@entrypoint
 def install_game(source, id, downloadonly=False,
                   unpackonly=False,removezip=False,nocache=False):
     '''download and unpack game found in database
@@ -77,3 +76,4 @@ def unpack_game(game,removezip=False):
     db.save_game(game)
     return True
 
+entrypoint(install_game)

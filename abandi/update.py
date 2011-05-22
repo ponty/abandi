@@ -7,9 +7,6 @@ import extract_id
 import time
 import sys
 
-
-
-@entrypoint
 def update(source, id, force=False):
     '''parse and update game in database
     :param source: ['all','gb64',..]
@@ -63,3 +60,4 @@ def update_game(source, id, force=False, sleep_between_downloads=0):
     print 'OK'
     return game
 
+entrypoint(update)
