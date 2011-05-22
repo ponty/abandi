@@ -1,4 +1,7 @@
-abandi is abandonware installer
+**abandi**
+
+:Date: |today|
+:PDF: `abandi.pdf <abandi.pdf>`_
 
 Contents:
 
@@ -12,6 +15,7 @@ Contents:
     help
     info
     related
+    dev
 
 Indices and tables
 ==================

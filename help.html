@@ -52,102 +52,104 @@
 <h1>command line help<a class="headerlink" href="#command-line-help" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dbdownload">
 <h2>dbdownload<a class="headerlink" href="#dbdownload" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.dbdownload --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.dbdownload --help
 usage: dbdownload.py [-h] [-u URL] [--debug]
 
 downloads and unpacks game database
 
 optional arguments:
   -h, --help         show this help message and exit
-  -u URL, --url URL  : packed sqlite file [default=https://github.com/download
-                     s/ponty/abandi/parsedb.sqlite.7z]
-  --debug            Set logging level to DEBUG</pre>
+  -u URL, --url URL  packed sqlite file
+  --debug            set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="parse">
 <h2>parse<a class="headerlink" href="#parse" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.parse --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.parse --help
 usage: parse.py [-h] [--debug] source id
 
 parse game on source and print all information
 
 positional arguments:
-  source      : ['gb64',..]
-  id          : ['1',..]
+  source      [&#39;gb64&#39;,..]
+  id          [&#39;1&#39;,..]
 
 optional arguments:
   -h, --help  show this help message and exit
-  --debug     Set logging level to DEBUG</pre>
+  --debug     set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="update">
 <h2>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.update --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.update --help
 usage: update.py [-h] [-f] [--debug] source id
 
 parse and update game in database
 
 positional arguments:
-  source       : ['all','gb64',..]
-  id           : ['all','1','1-5','1,5-8,10',..]
+  source       [&#39;all&#39;,&#39;gb64&#39;,..]
+  id           [&#39;all&#39;,&#39;1&#39;,&#39;1-5&#39;,&#39;1,5-8,10&#39;,..]
 
 optional arguments:
   -h, --help   show this help message and exit
   -f, --force
-  --debug      Set logging level to DEBUG</pre>
+  --debug      set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="info">
 <h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.info --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.info --help
 usage: info.py [-h] [--debug] source id
 
 print all information for game in database
 
 positional arguments:
-  source      : ['gb64',..]
-  id          : ['1',..]
+  source      [&#39;gb64&#39;,..]
+  id          [&#39;1&#39;,..]
 
 optional arguments:
   -h, --help  show this help message and exit
-  --debug     Set logging level to DEBUG</pre>
+  --debug     set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="search">
 <h2>search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.search --help
-usage: search.py [-h] [-c COLUMNS] [-w WHERE] [-o ORDERBY] [-n NAME]
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.search --help
+usage: search.py [-h] [-c COL_FORMAT] [-w WHERE] [-o ORDERBY] [-n NAME]
                  [-p PLATFORM] [-s SOURCE] [-r RUNNER] [--debug]
 
 search in game database
 
 optional arguments:
   -h, --help            show this help message and exit
-  -c COLUMNS, --columns COLUMNS
-                        [default=[source id platform] name]
+  -c COL_FORMAT, --col-format COL_FORMAT
   -w WHERE, --where WHERE
-                        : SQL where, e.g. "id&gt;5 and name like falcon"
+                        SQL where, e.g. &quot;id&gt;5 and name like falcon&quot;
   -o ORDERBY, --orderby ORDERBY
-                        [default=name]
-  -n NAME, --name NAME  : game name like this
+  -n NAME, --name NAME  game name like this
   -p PLATFORM, --platform PLATFORM
-                        : check lsplatform for list
+                        check lsplatform for list
   -s SOURCE, --source SOURCE
-                        : check lsplugin for list
+                        check lsplugin for list
   -r RUNNER, --runner RUNNER
-  --debug               Set logging level to DEBUG</pre>
+  --debug               set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.install --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.install --help
 usage: install.py [-h] [-d] [-u] [-r] [-n] [--debug] source id
 
 download and unpack game found in database
 
 positional arguments:
-  source              : ['gb64',..]
-  id                  : ['1',..]
+  source              [&#39;gb64&#39;,..]
+  id                  [&#39;1&#39;,..]
 
 optional arguments:
   -h, --help          show this help message and exit
@@ -155,52 +157,51 @@ optional arguments:
   -u, --unpackonly
   -r, --removezip
   -n, --nocache
-  --debug             Set logging level to DEBUG</pre>
+  --debug             set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="run">
 <h2>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.run --help
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.run --help
 usage: run.py [-h] [-r RUNNER] [-a] [--debug] source id
 
 start game using selected emulator
 
 positional arguments:
-  source                : ['gb64',..]
-  id                    : ['1',..]
+  source                [&#39;gb64&#39;,..]
+  id                    [&#39;1&#39;,..]
 
 optional arguments:
   -h, --help            show this help message and exit
   -r RUNNER, --runner RUNNER
-                        : emulator ['auto','dosbox','scummvm',..]
-                        [default=auto]
+                        emulator [&#39;auto&#39;,&#39;dosbox&#39;,&#39;scummvm&#39;,..]
   -a, --auto-install
-  --debug               Set logging level to DEBUG</pre>
+  --debug               set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 <div class="section" id="srun">
 <h2>srun<a class="headerlink" href="#srun" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m abandi.srun --help
-usage: srun.py [-h] [-c COLUMNS] [-w WHERE] [-o ORDERBY] [-n NAME]
+<div class="highlight-text"><div class="highlight"><pre>$ python -m abandi.srun --help
+usage: srun.py [-h] [-c COL_FORMAT] [-w WHERE] [-o ORDERBY] [-n NAME]
                [-p PLATFORM] [-s SOURCE] [-r RUNNER] [-a] [-i INDEX] [--debug]
 
 search and run
 
 optional arguments:
   -h, --help            show this help message and exit
-  -c COLUMNS, --columns COLUMNS
-                        [default=[source id platform] name]
+  -c COL_FORMAT, --col-format COL_FORMAT
   -w WHERE, --where WHERE
   -o ORDERBY, --orderby ORDERBY
-                        [default=name]
   -n NAME, --name NAME
   -p PLATFORM, --platform PLATFORM
   -s SOURCE, --source SOURCE
   -r RUNNER, --runner RUNNER
-                        [default=auto]
   -a, --auto-install
   -i INDEX, --index INDEX
-  --debug               Set logging level to DEBUG</pre>
+  --debug               set logging level to DEBUG
+</pre></div>
 </div>
 </div>
 </div>
