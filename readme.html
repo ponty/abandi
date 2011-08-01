@@ -70,15 +70,40 @@ unpacked and started by an emulator.</p>
 and emulators (dosbox, scummvm, stella, vice,..)</p>
 </div>
 </div>
+</div>
 <div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>if you have <a class="reference external" href="http://peak.telecommunity.com/DevCenter/EasyInstall">setuptools</a> installed:</p>
-<div class="highlight-python"><pre>easy_install https://github.com/ponty/abandi/zipball/master</pre>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">install <a class="reference external" href="http://peak.telecommunity.com/DevCenter/EasyInstall">setuptools</a></p>
+</li>
+<li><p class="first">install backends for <a class="reference external" href="https://github.com/ponty/pyunpack">pyunpack</a> (optional)</p>
+</li>
+<li><p class="first">install supported emulators (optional)</p>
+</li>
+<li><p class="first">install the program:</p>
+<div class="highlight-python"><pre># as root
+easy_install https://github.com/ponty/abandi/zipball/master</pre>
 </div>
-<p>or if you have <a class="reference external" href="http://pip.openplans.org/">pip</a> installed:</p>
-<div class="highlight-python"><pre>pip install https://github.com/ponty/abandi/zipball/master</pre>
+</li>
+</ul>
+</div></blockquote>
 </div>
-<p>Uninstall:</p>
+<div class="section" id="ubuntu">
+<h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>sudo apt-get install python-setuptools
+sudo easy_install https://github.com/ponty/abandi/zipball/master
+# optional
+sudo easy_install http://sourceforge.net/projects/patool/files/0.13/patool-0.13.tar.gz/download
+sudo apt-get install unzip unrar p7zip-full
+sudo apt-get install dosbox openmsx scummvm stella vice</pre>
+</div>
+</div>
+<div class="section" id="uninstall">
+<h2>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
+<p>first install <a class="reference external" href="http://pip.openplans.org/">pip</a>:</p>
 <div class="highlight-python"><pre>    # as root
 pip uninstall abandi
 
@@ -98,7 +123,12 @@ rm -r ~/.abandi</pre>
   <ul>
 <li><a class="reference internal" href="#">About</a><ul>
 <li><a class="reference internal" href="#basic-usage">Basic usage</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
+<li><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li><a class="reference internal" href="#uninstall">Uninstall</a></li>
 </ul>
 </li>
 </ul>
