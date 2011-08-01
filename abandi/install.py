@@ -1,4 +1,4 @@
-from abandi import config, unpacker, info
+from abandi import config, info
 from abandi.FileUtils import convertToFileName
 from abandi.downloader import Downloader
 from abandi.game_source import GameSource
@@ -6,6 +6,7 @@ from abandi.update import update_game
 from entrypoint2 import entrypoint
 import db
 import os
+import pyunpack
 import sys
 
 
@@ -66,9 +67,9 @@ def unpack_game(game,removezip=False):
     print 'unpacking %s...' % game.name,
     sys.stdout.flush()
     
-    msg=unpacker.Unpacker().unpack(game.zip, targetDir)
-    if msg:
-        return False
+    pyunpack.Archive(game.zip).extractall(targetDir, auto_create_dir=True)
+#    if msg:
+#        return False
     print 'OK'
     if removezip:
         os.remove(game.zip)

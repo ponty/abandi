@@ -53,13 +53,11 @@ install_requires = [
     'setuptools',
     'yapsy',
     'path.py',
-#    'patool',  # install not working
-
 #    'lxml',    # gcc install..
     'BeautifulSoup',
-    'argparse',
     'EasyProcess',
     'entrypoint2',
+    'pyunpack',
     ]
 
 # compatible with distutils of python 2.3+ or later

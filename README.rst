@@ -25,17 +25,35 @@ if you have an up-to-date database::
    and emulators (dosbox, scummvm, stella, vice,..)
 
 Installation
-------------
+============
 
-if you have setuptools_ installed::
+General
+--------
 
-    easy_install https://github.com/ponty/abandi/zipball/master
+ * install setuptools_
+ * install backends for pyunpack_ (optional)
+ * install supported emulators (optional)
+ * install the program::
 
-or if you have pip_ installed::
+    # as root
+    easy_install https://github.com/ponty/abandi/zipball/master    
 
-    pip install https://github.com/ponty/abandi/zipball/master
 
-Uninstall::
+Ubuntu
+----------
+::
+
+    sudo apt-get install python-setuptools
+    sudo easy_install https://github.com/ponty/abandi/zipball/master
+    # optional
+    sudo easy_install http://sourceforge.net/projects/patool/files/0.13/patool-0.13.tar.gz/download
+    sudo apt-get install unzip unrar p7zip-full
+    sudo apt-get install dosbox openmsx scummvm stella vice
+
+Uninstall
+----------
+
+first install pip_::
 	
 	# as root
     pip uninstall abandi
@@ -45,4 +63,5 @@ Uninstall::
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/
+.. _pyunpack: https://github.com/ponty/pyunpack
 
