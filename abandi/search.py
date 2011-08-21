@@ -10,6 +10,16 @@ def search_games(where='', orderby='name'):
     games = db.load_games(where, orderby)
     return games
 
+def search_for_runner(runner_name, games):
+    '''
+    '''
+    r = runner.Runner(runner_name)
+    #print runner_name
+    games = filter(lambda x:x.platform in r.platforms, games)
+    if hasattr(r, 'can_run_game'):
+        games = filter(lambda x:r.can_run_game(x), games)
+
+    return games
 
 @entrypoint
 def search(col_format='[source id platform] name', where='', orderby='name', name='', platform='', source='', runner=''):
@@ -39,14 +49,4 @@ def search(col_format='[source id platform] name', where='', orderby='name', nam
     game.print_games(games, col_format)
     return games
 
-def search_for_runner(runner_name, games):
-    '''
-    '''
-    r = runner.Runner(runner_name)
-    #print runner_name
-    games = filter(lambda x:x.platform in r.platforms, games)
-    if hasattr(r, 'can_run_game'):
-        games = filter(lambda x:r.can_run_game(x), games)
-
-    return games
 
