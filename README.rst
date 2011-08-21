@@ -33,6 +33,7 @@ General
  * install setuptools_
  * install backends for pyunpack_ (optional)
  * install supported emulators (optional)
+ * install HTML parsers (optional)
  * install the program::
 
     # as root
@@ -49,6 +50,7 @@ Ubuntu
     sudo easy_install http://sourceforge.net/projects/patool/files/0.13/patool-0.13.tar.gz/download
     sudo apt-get install unzip unrar p7zip-full
     sudo apt-get install dosbox openmsx scummvm stella vice
+    sudo apt-get install python-beautifulsoup python-lxml
 
 Uninstall
 ----------
