@@ -64,7 +64,7 @@ class Oscomp(IPlugin):
 
 
     def getGameHomePage(self, id):
-        url = "http://oscomp.hu/?lang/en&details/" + str(id)
+        url = "http://oscomp.hu/?lang/en*details/" + str(id)
         return url
 
     def download_options(self, game):
