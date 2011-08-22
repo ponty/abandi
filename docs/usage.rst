@@ -71,18 +71,6 @@ run `maniac mansion`_ using scummvm_:
     :timeout: 30
     :wait: 10
 
-examples
-------------
-
-Master of magic::
-
-    python -m abandi.srun -n "Master of magic" -p dos -a
-
-Master of Orion::
-
-    python -m abandi.srun -n "Master of Orion" -p dos -a
-
-
 
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/

@@ -12,6 +12,7 @@ Contents:
     depe
     source
     usage
+    examples
     help
     info
     related

@@ -1,9 +1,29 @@
 Console-based abandonware game installer and runner.
-Games are downloaded over internet.
 
-source: https://github.com/ponty/abandi
+Links:
+ * home: https://github.com/ponty/abandi
+ * documentation: http://ponty.github.com/abandi
 
-documentation: http://ponty.github.com/abandi
+Features:
+ - Games are serached on abandonware sites, downloaded over internet, 
+   unpacked and run by emulators
+ - HTML parser backends:
+     * lxml_
+     * BeautifulSoup_
+ - downloader backend: urllib_
+ - unpacker backend: pyunpack_
+ - simulator backends: 
+     * dosbox_
+     * openmsx_
+     * scummvm_
+     * stella_
+     * vice_
+ - plugin system: yapsy_
+ 
+Known problems:
+ - Python 3 is not supported
+ - tested mostly on linux
+ - emulators are checked in program too often, which can be slow
 
 Basic usage
 ------------
@@ -30,6 +50,7 @@ Installation
 General
 --------
 
+ * install Python_
  * install setuptools_
  * install backends for pyunpack_ (optional)
  * install supported emulators (optional)
@@ -66,4 +87,13 @@ first install pip_::
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/
 .. _pyunpack: https://github.com/ponty/pyunpack
-
+.. _Python: http://www.python.org/
+.. _dosbox: http://www.dosbox.com/
+.. _openmsx: http://openmsx.sourceforge.net/
+.. _scummvm: http://www.scummvm.org/
+.. _stella: http://stella.sourceforge.net/
+.. _vice:   http://www.viceteam.org/
+.. _lxml: http://lxml.de/
+.. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/
+.. _yapsy: http://yapsy.sourceforge.net/
+.. _urllib: http://docs.python.org/library/urllib.html

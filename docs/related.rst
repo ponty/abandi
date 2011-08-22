@@ -6,3 +6,4 @@ related projects
 * jGameBase: Java port of GameBase (http://sourceforge.net/projects/jgamebase/)
 * Kamefu: the emulator frontend and collection manager for KDE
 * Frontends for DOSBox : (http://www.dosbox.com/wiki/DOSBoxFrontends)
+* Packaged games: http://dosboxed-games.sandbox.cz
