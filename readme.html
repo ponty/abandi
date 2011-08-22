@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>About &mdash; abandi v0.0.4 documentation</title>
+    <title>About &mdash; abandi v0.0.5 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.4',
+        VERSION:     '0.0.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="abandi v0.0.4 documentation" href="index.html" />
+    <link rel="top" title="abandi v0.0.5 documentation" href="index.html" />
     <link rel="next" title="Dependencies" href="depe.html" />
     <link rel="prev" title="Indices and tables" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Indices and tables"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">abandi v0.0.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,10 +50,56 @@
             
   <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>Console-based abandonware game installer and runner.
-Games are downloaded over internet.</p>
-<p>source: <a class="reference external" href="https://github.com/ponty/abandi">https://github.com/ponty/abandi</a></p>
-<p>documentation: <a class="reference external" href="http://ponty.github.com/abandi">http://ponty.github.com/abandi</a></p>
+<p>Console-based abandonware game installer and runner.</p>
+<dl class="docutils">
+<dt>Links:</dt>
+<dd><ul class="first last simple">
+<li>home: <a class="reference external" href="https://github.com/ponty/abandi">https://github.com/ponty/abandi</a></li>
+<li>documentation: <a class="reference external" href="http://ponty.github.com/abandi">http://ponty.github.com/abandi</a></li>
+</ul>
+</dd>
+<dt>Features:</dt>
+<dd><ul class="first last">
+<li><p class="first">Games are serached on abandonware sites, downloaded over internet,
+unpacked and run by emulators</p>
+</li>
+<li><dl class="first docutils">
+<dt>HTML parser backends:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://lxml.de/">lxml</a></li>
+<li><a class="reference external" href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">downloader backend: <a class="reference external" href="http://docs.python.org/library/urllib.html">urllib</a></p>
+</li>
+<li><p class="first">unpacker backend: <a class="reference external" href="https://github.com/ponty/pyunpack">pyunpack</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>simulator backends:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.dosbox.com/">dosbox</a></li>
+<li><a class="reference external" href="http://openmsx.sourceforge.net/">openmsx</a></li>
+<li><a class="reference external" href="http://www.scummvm.org/">scummvm</a></li>
+<li><a class="reference external" href="http://stella.sourceforge.net/">stella</a></li>
+<li><a class="reference external" href="http://www.viceteam.org/">vice</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">plugin system: <a class="reference external" href="http://yapsy.sourceforge.net/">yapsy</a></p>
+</li>
+</ul>
+</dd>
+<dt>Known problems:</dt>
+<dd><ul class="first last simple">
+<li>Python 3 is not supported</li>
+<li>tested mostly on linux</li>
+<li>emulators are checked in program too often, which can be slow</li>
+</ul>
+</dd>
+</dl>
 <div class="section" id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
 <p>The selected game will be downloaded,
@@ -77,11 +123,15 @@ and emulators (dosbox, scummvm, stella, vice,..)</p>
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
+<li><p class="first">install <a class="reference external" href="http://www.python.org/">Python</a></p>
+</li>
 <li><p class="first">install <a class="reference external" href="http://peak.telecommunity.com/DevCenter/EasyInstall">setuptools</a></p>
 </li>
 <li><p class="first">install backends for <a class="reference external" href="https://github.com/ponty/pyunpack">pyunpack</a> (optional)</p>
 </li>
 <li><p class="first">install supported emulators (optional)</p>
+</li>
+<li><p class="first">install HTML parsers (optional)</p>
 </li>
 <li><p class="first">install the program:</p>
 <div class="highlight-python"><pre># as root
@@ -98,7 +148,8 @@ sudo easy_install https://github.com/ponty/abandi/zipball/master
 # optional
 sudo easy_install http://sourceforge.net/projects/patool/files/0.13/patool-0.13.tar.gz/download
 sudo apt-get install unzip unrar p7zip-full
-sudo apt-get install dosbox openmsx scummvm stella vice</pre>
+sudo apt-get install dosbox openmsx scummvm stella vice
+sudo apt-get install python-beautifulsoup python-lxml</pre>
 </div>
 </div>
 <div class="section" id="uninstall">
@@ -173,7 +224,7 @@ rm -r ~/.abandi</pre>
         <li class="right" >
           <a href="index.html" title="Indices and tables"
              >previous</a> |</li>
-        <li><a href="index.html">abandi v0.0.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">abandi v0.0.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

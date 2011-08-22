@@ -71,6 +71,7 @@ run `maniac mansion`_ using scummvm_:
     :timeout: 30
     :wait: 10
 
+
 .. _galaga: http://www.gamebase64.com/game.php?id=3020
 .. _scummvm: http://www.scummvm.org/
 .. _vice: http://www.viceteam.org/
