@@ -27,5 +27,5 @@ Dune:
 .. program-screenshot:: python -m abandi.srun -n "dune" -p dos -a
     :prompt:
     :scale: 50 %
-    :wait: 20
+    :wait: 30
 
