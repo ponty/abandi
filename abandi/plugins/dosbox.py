@@ -17,7 +17,12 @@ class Dosbox(IPlugin):
 
     def run_game(self, game):
         gameExe = searchExe(game.dir, game.name, self.extensions)
-        command = ['dosbox', '-c', "mount c " + dirname(gameExe), '-c', 'c:', '-c', basename(gameExe)]
+        command = ['dosbox', 
+                   '-exit',
+                   '-c', "mount c " + dirname(gameExe), 
+                   '-c', 'c:', 
+                   '-c', basename(gameExe)
+                   ]
         EasyProcess(command).call()
     def version(self):
         return extract_version(EasyProcess('dosbox -version').call().stdout)
