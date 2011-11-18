@@ -1,9 +1,9 @@
 Examples
 ==================================
 
-Civilisation:
+Civilization:
 
-.. program-screenshot:: python -m abandi.srun -n "civilisation" -p dos -a
+.. program-screenshot:: python -m abandi.srun -n "civilization" -p dos -a -i 1
     :prompt:
     :scale: 50 %
     :wait: 10
