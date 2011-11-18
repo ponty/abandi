@@ -6,7 +6,7 @@ Civilisation:
 .. program-screenshot:: python -m abandi.srun -n "civilisation" -p dos -a
     :prompt:
     :scale: 50 %
-    :wait: 60
+    :wait: 10
 
 Colonization:
 
