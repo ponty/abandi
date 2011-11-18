@@ -17,6 +17,7 @@ class urllib (IPlugin):
 
 
     def download(self, url, targetDir, fileName=None, useSessionCookie=False, referer=None):
+        logging.debug('download:' + url)
         cookie = None
         targetDir = path(targetDir)
         if not targetDir.isdir():

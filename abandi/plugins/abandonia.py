@@ -80,5 +80,5 @@ class Abandonia(IPlugin):
     def game_file_url(self, game):
         parent = "http://www.abandonia.com/en/downloadgame/" + str(game.id) + "/index.html"
         parser = WebParser.WebParser(parent, cached=False)
-        game_file_url = parser.getFirstLink(".*files.abandonia.com.*")
+        game_file_url = parser.getFirstLink(".*files.abandonia.com/download.*")
         return game_file_url
