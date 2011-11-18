@@ -68,7 +68,6 @@ Ubuntu
     sudo apt-get install python-setuptools
     sudo easy_install https://github.com/ponty/abandi/zipball/master
     # optional
-    sudo easy_install http://sourceforge.net/projects/patool/files/0.13/patool-0.13.tar.gz/download
     sudo apt-get install unzip unrar p7zip-full
     sudo apt-get install dosbox openmsx scummvm stella vice
     sudo apt-get install python-beautifulsoup python-lxml
