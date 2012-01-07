@@ -1,4 +1,3 @@
-from abandi import version
 from abandi.exefinder import searchExe
 from easyprocess import EasyProcess
 from yapsy.IPlugin import IPlugin

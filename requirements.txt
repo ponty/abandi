@@ -1,0 +1,7 @@
+setuptools
+yapsy
+path.py
+BeautifulSoup
+EasyProcess
+entrypoint2
+pyunpack
