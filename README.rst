@@ -51,22 +51,22 @@ General
 --------
 
  * install Python_
- * install setuptools_
+ * install pip_
  * install backends for pyunpack_ (optional)
  * install supported emulators (optional)
  * install HTML parsers (optional)
  * install the program::
 
     # as root
-    easy_install https://github.com/ponty/abandi/zipball/master    
+    pip install https://github.com/ponty/abandi/zipball/master    
 
 
 Ubuntu
 ----------
 ::
 
-    sudo apt-get install python-setuptools
-    sudo easy_install https://github.com/ponty/abandi/zipball/master
+    sudo apt-get install python-pip
+    sudo pip install https://github.com/ponty/abandi/zipball/master
     # optional
     sudo apt-get install unzip unrar p7zip-full
     sudo apt-get install dosbox openmsx scummvm stella vice
@@ -75,7 +75,7 @@ Ubuntu
 Uninstall
 ----------
 
-first install pip_::
+::
 	
 	# as root
     pip uninstall abandi

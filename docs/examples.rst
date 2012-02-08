@@ -7,6 +7,7 @@ Civilization:
     :prompt:
     :scale: 50 %
     :wait: 10
+    :timeout: 600
 
 Colonization:
 
@@ -14,6 +15,7 @@ Colonization:
     :prompt:
     :scale: 50 %
     :wait: 60
+    :timeout: 600
 
 Master of magic:
 
@@ -21,6 +23,7 @@ Master of magic:
     :prompt:
     :scale: 50 %
     :wait: 30
+    :timeout: 600
 
 Master of Orion:
 
@@ -28,6 +31,7 @@ Master of Orion:
     :prompt:
     :scale: 50 %
     :wait: 30
+    :timeout: 600
 
 Beneath a Steel Sky:
 
@@ -35,6 +39,7 @@ Beneath a Steel Sky:
     :prompt:
     :scale: 50 %
     :wait: 30
+    :timeout: 600
 
 Dune:
 
@@ -42,6 +47,7 @@ Dune:
     :prompt:
     :scale: 50 %
     :wait: 30
+    :timeout: 600
 
 
 
