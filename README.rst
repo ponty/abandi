@@ -7,12 +7,12 @@ Links:
 Features:
  - Games are serached on abandonware sites, downloaded over internet, 
    unpacked and run by emulators
- - HTML parser backends:
+ - HTML parser back-ends:
      * lxml_
      * BeautifulSoup_
- - downloader backend: urllib_
- - unpacker backend: pyunpack_
- - simulator backends: 
+ - downloader back-end: urllib_
+ - unpacker back-end: pyunpack_
+ - simulator back-ends: 
      * dosbox_
      * openmsx_
      * scummvm_
@@ -52,7 +52,7 @@ General
 
  * install Python_
  * install pip_
- * install backends for pyunpack_ (optional)
+ * install back-ends for pyunpack_ (optional)
  * install supported emulators (optional)
  * install HTML parsers (optional)
  * install the program::

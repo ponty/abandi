@@ -11,7 +11,7 @@ import sys
 
 
 
-def install_game(source, id, downloadonly=False,
+def install_game(source='abandonia', id=129, downloadonly=False,
                   unpackonly=False,removezip=False,nocache=False):
     '''download and unpack game found in database
     :param source: ['gb64',..]

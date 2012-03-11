@@ -18,11 +18,13 @@ class Cache ( IPlugin):
         #assert self.backend
         targetDir = path.path(targetDir)
 
-        if not fileName:
-            fileName = FileUtils.convertToFileName(url)
-        pfad = targetDir / fileName;
-        if pfad.isfile() and pfad.getsize():
-            return pfad
+        if url:
+            if not fileName:
+                fileName = FileUtils.convertToFileName(url)
+            pfad = targetDir / fileName;
+            if pfad.isfile() and pfad.getsize():
+                return pfad
+        
         pl = Downloader(cached=0, name=self.backend)
         return pl.download(url, targetDir, fileName, **kw)
 
