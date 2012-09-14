@@ -4,6 +4,7 @@ from yapsy.IPlugin import IPlugin
 import logging
 import urllib2
 
+log = logging.getLogger(__name__)
 
 class urllib (IPlugin):
     '''
@@ -17,7 +18,7 @@ class urllib (IPlugin):
 
 
     def download(self, url, targetDir, fileName=None, useSessionCookie=False, referer=None):
-        logging.debug('download:' + url)
+        log.debug('downloading:' + str(url))
         cookie = None
         targetDir = path(targetDir)
         if not targetDir.isdir():

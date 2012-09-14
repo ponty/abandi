@@ -5,10 +5,12 @@ from abandi.game_source import GameSource
 from abandi.update import update_game
 from entrypoint2 import entrypoint
 import db
+import logging
 import os
 import pyunpack
 import sys
 
+log = logging.getLogger(__name__)
 
 
 def install_game(source='abandonia', id=129, downloadonly=False,
@@ -40,10 +42,12 @@ def download_game(game,nocache=False):
         downloadOptions = src_plugin.download_options(game)
 
     if hasattr(src_plugin,'game_file_url'):
+        log.debug('game_file_url is not static, calling plugin:%s' % src_plugin)
         gameUrl = src_plugin.game_file_url(game)
     else:
         gameUrl = game.game_file_url
-
+    assert gameUrl
+    
     downloader = Downloader(cached=not nocache)
     print 'downloading %s...' % game.name,
     sys.stdout.flush()

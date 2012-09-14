@@ -1,7 +1,9 @@
 from abandi import WebParser
+from abandi.downloader import Downloader
 from abandi.game import Game
-import logging
 from yapsy.IPlugin import IPlugin
+import logging
+from abandi import config
 
 class Abandonia(IPlugin):
     hook = 'game_source'
@@ -23,7 +25,7 @@ class Abandonia(IPlugin):
         parser = WebParser.WebParser(url)
 
         # buy it!
-        all_images='|'.join(parser.getImages())
+        all_images = '|'.join(parser.getImages())
         if 'buy' in all_images.lower():
             return None
         if 'protected' in all_images.lower():
@@ -79,6 +81,19 @@ class Abandonia(IPlugin):
 
     def game_file_url(self, game):
         parent = "http://www.abandonia.com/en/downloadgame/" + str(game.id) + "/index.html"
-        parser = WebParser.WebParser(parent, cached=False)
-        game_file_url = parser.getFirstLink(".*files.abandonia.com/download.*")
+
+        # old
+        #parser = WebParser.WebParser(parent, cached=False)
+        #game_file_url = parser.getFirstLink(".*files.abandonia.com/download.*")
+
+        # example:
+#        function go_to_downloadGame()
+#        {
+#            window.open("http://files.abandonia.com/download.php?game=Return+to+Ringworld&amp;secure=52f031ad8496c642cbbac42baf293a1c&amp;td=1347598121");
+#        }
+
+        fname = Downloader(cached=False).download(parent, config.CACHE)
+        page = open(fname).read()
+        s = page.split('go_to_downloadGame')[1]
+        game_file_url = s.split('"')[1]
         return game_file_url
