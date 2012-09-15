@@ -1,10 +1,7 @@
-from easyprocess import extract_version
 from abandi.exefinder import searchExe
-from easyprocess import EasyProcess
+from easyprocess import EasyProcess, extract_version, EasyProcessError
 from yapsy.IPlugin import IPlugin
 
-
-EasyProcess('hatari -v').check()
 
 class hatari(IPlugin):
     hook = 'runner'
@@ -14,8 +11,17 @@ class hatari(IPlugin):
     extensions = ['bin']
     platforms = ['atari2k6']
     ubuntu_package = 'hatari'
+    cmd_available = 'hatari -v'
 
     def run_game(self, game):
         EasyProcess(['hatari', searchExe(game.dir, game.name, self.extensions)]).call()
+
     def version(self):
         return extract_version(EasyProcess('hatari -v').call().stdout)
+
+    def available(self):
+        try:
+            EasyProcess(self.cmd_available).call()
+            return True
+        except EasyProcessError:
+            return False

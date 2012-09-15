@@ -52,6 +52,10 @@ def plugins_unsorted(hook=None, places=None, ext='ini'):
                 jo = p.plugin_object.hook == hook
                 if jo:
                     logging.debug('plugin "' + p.name + '" was accepted for hook "' + hook + '"')
+                    if hasattr(p.plugin_object, 'available'):
+                        jo = p.plugin_object.available()
+                    else:
+                        logging.debug('missing "available" in "' + p.name + '" ')
         return jo
 
     all = [x for x in all if pfilter(x)]

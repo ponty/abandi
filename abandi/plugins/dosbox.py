@@ -1,10 +1,8 @@
-from easyprocess import extract_version
 from abandi.exefinder import searchExe
-from easyprocess import EasyProcess
+from easyprocess import EasyProcess, extract_version, EasyProcessError
 from os.path import dirname, basename
 from yapsy.IPlugin import IPlugin
 
-EasyProcess('dosbox -version').check()
 
 class Dosbox(IPlugin):
     hook = 'runner'
@@ -14,15 +12,24 @@ class Dosbox(IPlugin):
     extensions = ['exe', 'bat', 'com']
     platforms = ['dos']
     ubuntu_package = 'dosbox'
+    cmd_available = 'dosbox -version'
 
     def run_game(self, game):
         gameExe = searchExe(game.dir, game.name, self.extensions)
-        command = ['dosbox', 
+        command = ['dosbox',
                    '-exit',
-                   '-c', "mount c " + dirname(gameExe), 
-                   '-c', 'c:', 
+                   '-c', "mount c " + dirname(gameExe),
+                   '-c', 'c:',
                    '-c', basename(gameExe)
                    ]
         EasyProcess(command).call()
+
     def version(self):
         return extract_version(EasyProcess('dosbox -version').call().stdout)
+
+    def available(self):
+        try:
+            EasyProcess(self.cmd_available).call()
+            return True
+        except EasyProcessError:
+            return False

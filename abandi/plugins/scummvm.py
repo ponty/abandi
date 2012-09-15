@@ -1,13 +1,9 @@
-from easyprocess import extract_version
 from abandi import downloader
-from easyprocess import EasyProcess
+from easyprocess import EasyProcess, extract_version, EasyProcessError
 from path import path
 from yapsy.IPlugin import IPlugin
 import logging
 import os
-
-EasyProcess('scummvm -v').check()
-
 
 KYRA_DAT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/kyra.dat"
 KYRA_DAT = "kyra.dat"
@@ -15,6 +11,7 @@ LURE_DAT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/l
 LURE_DAT = "lure.dat"
 SKY_CPT_URL = "http://github.com/scummvm/scummvm/raw/v1.2.1/dists/engine-data/sky.cpt"
 SKY_CPT = "sky.cpt"
+
 
 class scummvm(IPlugin):
     hook = 'runner'
@@ -24,6 +21,7 @@ class scummvm(IPlugin):
     platforms = ['dos', 'c64']
     ubuntu_package = 'scummvm'
     home_url = 'http://www.scummvm.org/'
+    cmd_available = 'scummvm -v'
 
     def __init__(self):
         self.gameMap = None
@@ -213,3 +211,10 @@ class scummvm(IPlugin):
 
         if url:
             downloader.Downloader().download(url, game.dir, fileName=file)
+
+    def available(self):
+        try:
+            EasyProcess(self.cmd_available).call()
+            return True
+        except EasyProcessError:
+            return False

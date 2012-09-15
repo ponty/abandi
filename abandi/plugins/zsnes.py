@@ -1,9 +1,7 @@
 from abandi.exefinder import searchExe
-from easyprocess import EasyProcess
+from easyprocess import EasyProcess, EasyProcessError
 from yapsy.IPlugin import IPlugin
 
-
-EasyProcess('zsnes -?').check()
 
 class zsnes(IPlugin):
     hook = 'runner'
@@ -16,10 +14,19 @@ class zsnes(IPlugin):
 
     platforms = ['snes']
     ubuntu_package = 'zsnes'
-
+    cmd_available = 'zsnes -?'
+    
     def run_game(self, game):
         EasyProcess(['zsnes', searchExe(game.dir, game.name, self.extensions)]).call()
+
     def version(self):
         ''' no switch for version
         '''
         return 'unknown'
+
+    def available(self):
+        try:
+            EasyProcess(self.cmd_available).call()
+            return True
+        except EasyProcessError:
+            return False
