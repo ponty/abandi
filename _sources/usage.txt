@@ -44,7 +44,7 @@ run galaga_ by id:
 .. program-screenshot:: python -m abandi.run -a gb64 3020
     :prompt:
     :scale: 50 %
-    :timeout: 30
+    :timeout: 600
     :wait: 5
 
 run galaga_ by name:
@@ -52,7 +52,7 @@ run galaga_ by name:
 .. program-screenshot:: python -m abandi.srun -a --name galaga
     :prompt:
     :scale: 50 %
-    :timeout: 30
+    :timeout: 600
     :wait: 10
 
 run `maniac mansion`_ using vice_:
@@ -60,7 +60,7 @@ run `maniac mansion`_ using vice_:
 .. program-screenshot:: python -m abandi.run -a gb64 4577 --runner vice
     :prompt:
     :scale: 50 %
-    :timeout: 30
+    :timeout: 600
     :wait: 10
 
 run `maniac mansion`_ using scummvm_:
@@ -68,7 +68,7 @@ run `maniac mansion`_ using scummvm_:
 .. program-screenshot:: python -m abandi.run -a gb64 4577 --runner scummvm
     :prompt:
     :scale: 50 %
-    :timeout: 30
+    :timeout: 600
     :wait: 10
 
 

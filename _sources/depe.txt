@@ -7,7 +7,6 @@ basic
 .. csv-table::
 
    "python" , , ""
-   "yapsy" , , "plugin system"
 
 html parsers
 ----------------
