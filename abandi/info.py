@@ -2,6 +2,7 @@ from entrypoint2 import entrypoint
 import db
 import game
 
+
 def search_game(source, id):
     #x=sources.manager.find_plugin(source)
     #game=db.load_game_by_key(x.info.get('short_name'), id)

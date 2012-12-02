@@ -1,4 +1,6 @@
+import logging
 
+log = logging.getLogger(__name__)
 
 platform_dict = dict(
                    megadrive=['SEGA Genesis', 'Mega Drive'],
@@ -19,21 +21,27 @@ platform_dict = dict(
 
 PLATFORMS = platform_dict.keys()
 
+
 def id(name):
     name = name.lower().strip()
     id = None
+
     if name in PLATFORMS:
         id = name
+
     for (k, ls) in platform_dict.items():
         for s in ls :
             if s.lower() in name:
                 id = k
                 break
-    if id=='nes' and 'super' in name:
-        id='snes'
+
+    if id == 'nes' and 'super' in name:
+        id = 'snes'
+
     if not id:
-        print 'error: unknown platform:' + name
-        id = name
+        # print 'error: unknown platform:' + name
+        # id = name
+        log.debug('error: unknown platform:' + name)
     else:
         assert id in PLATFORMS
     return id

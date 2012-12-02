@@ -2,9 +2,7 @@ import pluginloader
 
 def Runner(name):
     x=pluginloader.plugin(hook='runner', name=name)
-    if x:
-        return x.plugin_object
+    return x
 
 def runners():
-    ls=pluginloader.plugins(hook='runner')
-    return [x.plugin_object for x in ls]
+    return pluginloader.plugins(hook='runner')

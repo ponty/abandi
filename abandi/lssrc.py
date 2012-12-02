@@ -2,9 +2,10 @@ from abandi.game_source import game_sources
 import operator
 from entrypoint2 import entrypoint
 
+
 @entrypoint
 def list_sources():
-    ''' list runners found by yapsy
+    ''' list runners
     '''
     all = game_sources()
     all.sort(key=operator.attrgetter('name'))

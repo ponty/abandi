@@ -2,18 +2,18 @@ from path import path
 
 
 # plugins
-#htmlparsers_places=["plugins"]
-htmlparsers=['lxml','soup'] # lxml is faster
-downloaders_nocache=['urllib','curl']
-downloaders_cache=['cache']
-unpackers=['allunpacker', 'p7zip','unrar']
+htmlparsers = ['lxml', 'soup']  # lxml is faster
 
-#directories
+# directories
 ABANDI_HOME_DIR = path('~').expanduser() / ".abandi"
 CACHE = ABANDI_HOME_DIR / "cache" / 'http'
 GAMES = ABANDI_HOME_DIR / "games"
 GameArchives = ABANDI_HOME_DIR / "cache" / "gamezip"
 
-#ORIGINAL_ICONS = ABANDI_HOME_DIR / "originalIcons"
-#ICONS = ABANDI_HOME_DIR / "icons"
-#RESOLVE = ABANDI_HOME_DIR / "resolve"
+DB_GAME_URL = 'https://github.com/downloads/ponty/abandi/parsedb.sqlite.7z'
+DB_GAME_PATH = ABANDI_HOME_DIR / 'parsedb.sqlite'
+DB_FILES_PATH = ABANDI_HOME_DIR / 'installdb.sqlite'
+
+
+
+

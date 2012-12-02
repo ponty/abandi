@@ -6,6 +6,8 @@ import logging
 import re
 
 SLASH = "/"
+
+
 class WebParser:
     def __init__(self, url, cached=True):
         logging.debug('parsing:' + url)

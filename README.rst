@@ -18,12 +18,10 @@ Features:
      * scummvm_
      * stella_
      * vice_
- - plugin system: yapsy_
+ - supported python versions: 2.6, 2.7
  
 Known problems:
- - Python 3 is not supported
  - tested mostly on linux
- - emulators are checked in program too often, which can be slow
 
 Basic usage
 ------------
@@ -69,7 +67,7 @@ Ubuntu
     sudo pip install https://github.com/ponty/abandi/zipball/master
     # optional
     sudo apt-get install unzip unrar p7zip-full
-    sudo apt-get install dosbox openmsx scummvm stella vice
+    sudo apt-get install dosbox openmsx scummvm stella vice hatari
     sudo apt-get install python-beautifulsoup python-lxml
 
 Uninstall
@@ -77,7 +75,7 @@ Uninstall
 
 ::
 	
-	# as root
+    # as root
     pip uninstall abandi
     
     # database, games
@@ -94,5 +92,4 @@ Uninstall
 .. _vice:   http://www.viceteam.org/
 .. _lxml: http://lxml.de/
 .. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/
-.. _yapsy: http://yapsy.sourceforge.net/
 .. _urllib: http://docs.python.org/library/urllib.html

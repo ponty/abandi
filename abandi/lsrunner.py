@@ -3,9 +3,10 @@ import operator
 
 from entrypoint2 import entrypoint
 
+
 @entrypoint
 def list_runners():
-    ''' list runners found by yapsy
+    ''' list runners
     '''
     all = runners()
     all.sort(key=operator.attrgetter('name'))

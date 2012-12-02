@@ -1,8 +1,11 @@
 from path import path
 from setuptools import find_packages
+import logging
 import os
 import sphinx
 import sys
+
+#logging.basicConfig(level=logging.DEBUG)
 
 def read_project_version(py=None, where='.', exclude=['bootstrap', 'pavement', 'doc', 'docs', 'test', 'tests', ]):
     if not py:

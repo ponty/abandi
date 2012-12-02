@@ -13,7 +13,7 @@ import sys
 log = logging.getLogger(__name__)
 
 
-def install_game(source='abandonia', id=129, downloadonly=False,
+def install_game(source, id, downloadonly=False,
                   unpackonly=False,removezip=False,nocache=False):
     '''download and unpack game found in database
     :param source: ['gb64',..]

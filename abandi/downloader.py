@@ -1,12 +1,9 @@
-import config
-import pluginloader
+from abandi.downloaders.cache import Cache
+from abandi.downloaders.urllib import Urllib
+
 
 def Downloader(cached=True, name=None):
     if cached:
-        ls=config.downloaders_cache
+        return Cache()
     else:
-        ls=config.downloaders_nocache
-
-    x=pluginloader.plugin(hook='downloader', name=name, prio_list=ls)
-    if x:
-        return x.plugin_object
+        return Urllib()

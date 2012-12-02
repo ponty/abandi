@@ -8,13 +8,15 @@ import game
 PARSE_DB = 0
 INSTALL_DB = 1
 
-d = config.ABANDI_HOME_DIR
+# d = config.ABANDI_HOME_DIR
 
-FILE_NAME = [d / 'parsedb.sqlite', d / 'installdb.sqlite']
+FILE_NAME = [config.DB_GAME_PATH, config.DB_FILES_PATH]
 VERSION = [1, 1]
 fields = [game.fields_key + game.fields_parse, game.fields_key + game.fields_install]
 data_fields = [game.fields_parse, game.fields_install]
 fields_all = game.fields_key + game.fields_parse + game.fields_install
+
+
 def get_version(n):
     conn = sqlite3.connect(FILE_NAME[n])
     cur = conn.cursor()
@@ -29,12 +31,15 @@ def get_version(n):
     cur.close()
     return version
 
+
 def exists(n):
     return os.path.isfile(FILE_NAME[n])
+
 
 def init():
     init_n(0)
     init_n(1)
+
 
 def init_n(n):
     logging.debug('own version:' + str(VERSION))
@@ -52,6 +57,7 @@ def init_n(n):
         conn.commit()
         cur.close()
 
+
 def create_tables(cur, n):
     execute(cur, 'create table games('
             + ' text,'.join(game.fields_key) + ' integer'
@@ -61,6 +67,7 @@ def create_tables(cur, n):
     execute(cur, 'create table version(version text)')
     execute(cur, 'insert into version (version) values (?)', (VERSION[n],))
 
+
 def execute(cur, sql, x=tuple()):
     logging.debug('sql:' + sql)
     logging.debug('par:' + str(x))
@@ -68,7 +75,7 @@ def execute(cur, sql, x=tuple()):
 
 def open():
     init()
-    #conn = sqlite3.connect(FILE_NAME[n])
+    # conn = sqlite3.connect(FILE_NAME[n])
     conn = sqlite3.connect(':memory:')
     cur = conn.cursor()
     execute(cur, 'attach database "%s" as p' % (FILE_NAME[PARSE_DB],))
@@ -82,7 +89,7 @@ def save_game(game):
 
     cur = conn.cursor()
 
-    def doit(dbalias,n):
+    def doit(dbalias, n):
         execute(cur, 'select * from {dbalias}.games where id=? and source=?'.format(dbalias=dbalias)
                 , (game.id, game.source))
 
@@ -91,14 +98,14 @@ def save_game(game):
                     (game.id, game.source.lower()))
 
         for f in data_fields[n]:
-            v=game.__dict__.get(f)
-            #if v:
-            execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f,dbalias=dbalias)
+            v = game.__dict__.get(f)
+            # if v:
+            execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f, dbalias=dbalias)
                     , (v, game.id, game.source))
-    doit('p',0)
+    doit('p', 0)
 
     if game.zip or game.dir:
-        doit('i',1)
+        doit('i', 1)
 
     close(conn)
 

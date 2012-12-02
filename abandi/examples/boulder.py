@@ -11,6 +11,7 @@ from entrypoint2 import entrypoint
 def norm(s):
     return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
 
+
 @entrypoint
 def main():
     games = search_games(where='name like "%boulder%"')

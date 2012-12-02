@@ -26,7 +26,7 @@ def update_source_games(source, id, force=False):
     for x in id_set:
         sleep_between_downloads = 0
         if not first:
-            sleep_between_downloads = 2
+            sleep_between_downloads = 0
         first=0
         update_game(source, x, force, sleep_between_downloads=sleep_between_downloads)
 

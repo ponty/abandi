@@ -1,7 +1,10 @@
 from abandi import config
+from abandi.iplugin import IPlugin
 from path import path
-from yapsy.PluginManager import PluginManager
 import logging
+import plugins
+
+log = logging.getLogger(__name__)
 
 def  plugin(name=None, **kw):
     all = plugins(**kw)
@@ -14,9 +17,9 @@ def  plugin(name=None, **kw):
             pl = all[0]
 
     if pl:
-        logging.debug('plugin selected:' + pl.name)
+        log.debug('plugin selected:' + pl.name)
     else:
-        logging.debug('plugin not found')
+        log.debug('plugin not found')
     return pl
 
 def default_places():
@@ -32,34 +35,42 @@ def plugins(prio_list=None, **kw):
         all = [x[1] for x in ls]
     return all
 
+
 def plugins_unsorted(hook=None, places=None, ext='ini'):
     if not places:
         places = default_places()
 
-    pm = PluginManager()
-#    pm.setPluginInfoClass(PluginInfo)
-    pm.setPluginInfoExtension(ext)
-    pm.setPluginPlaces(places)
-    pm.collectPlugins()
-    all = pm.getAllPlugins()
+    all = IPlugin.__subclasses__()
+
+    def create_obj(cl):
+        try:
+            obj = cl()
+        except Exception, e:
+            log.debug('plugin error:')
+            log.debug(e)
+            obj = None
+        return obj
+
+    all = [create_obj(x) for x in all]
+
+    # filter None
+    all = [x for x in all if (x)]
 
     def pfilter(p):
         jo = 1
         if hook:
-            if not hasattr(p.plugin_object, 'hook'):
-                logging.debug('missing hook in "' + p.name + '" ')
+            if not hasattr(p, 'hook'):
+                log.debug('missing hook in "' + p.name + '" ')
             else:
-                jo = p.plugin_object.hook == hook
+                jo = p.hook == hook
                 if jo:
-                    logging.debug('plugin "' + p.name + '" was accepted for hook "' + hook + '"')
-                    if hasattr(p.plugin_object, 'available'):
-                        jo = p.plugin_object.available()
+                    log.debug('plugin "' + p.name + '" was accepted for hook "' + hook + '"')
+                    if hasattr(p, 'available'):
+                        jo = p.available()
                     else:
-                        logging.debug('missing "available" in "' + p.name + '" ')
+                        log.debug('missing "available" in "' + p.name + '" ')
         return jo
 
     all = [x for x in all if pfilter(x)]
-    for x in all:
-        x.plugin_object.name = x.name
     return all
 
