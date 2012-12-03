@@ -25,10 +25,10 @@ def dbdownload(url=config.DB_GAME_URL):
 
     print 'unpacking %s...' % f,
     sys.stdout.flush()
-    error_text = pyunpack.Archive(f).extractall(config.ABANDI_HOME_DIR, auto_create_dir=1)
+    error_text = pyunpack.Archive(
+        f).extractall(config.ABANDI_HOME_DIR, auto_create_dir=1)
     if error_text:
         print 'ERROR!'
         print error_text
     else:
         print 'OK'
-

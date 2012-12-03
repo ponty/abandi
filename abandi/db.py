@@ -12,7 +12,8 @@ INSTALL_DB = 1
 
 FILE_NAME = [config.DB_GAME_PATH, config.DB_FILES_PATH]
 VERSION = [1, 1]
-fields = [game.fields_key + game.fields_parse, game.fields_key + game.fields_install]
+fields = [game.fields_key + game.fields_parse, game.fields_key +
+          game.fields_install]
 data_fields = [game.fields_parse, game.fields_install]
 fields_all = game.fields_key + game.fields_parse + game.fields_install
 
@@ -73,6 +74,7 @@ def execute(cur, sql, x=tuple()):
     logging.debug('par:' + str(x))
     cur.execute(sql, x)
 
+
 def open():
     init()
     # conn = sqlite3.connect(FILE_NAME[n])
@@ -82,6 +84,7 @@ def open():
     execute(cur, 'attach database "%s" as i' % (FILE_NAME[INSTALL_DB],))
     return (conn, cur)
 
+
 def save_game(game):
     game.source = game.source.lower()
 
@@ -90,24 +93,24 @@ def save_game(game):
     cur = conn.cursor()
 
     def doit(dbalias, n):
-        execute(cur, 'select * from {dbalias}.games where id=? and source=?'.format(dbalias=dbalias)
-                , (game.id, game.source))
+        execute(cur, 'select * from {dbalias}.games where id=? and source=?'.format(dbalias=dbalias), (game.id, game.source))
 
         if not len(cur.fetchall()):
-            execute(cur, 'insert into {dbalias}.games (id,source) values (?,?)'.format(dbalias=dbalias),
-                    (game.id, game.source.lower()))
+            execute(
+                cur, 'insert into {dbalias}.games (id,source) values (?,?)'.format(dbalias=dbalias),
+                (game.id, game.source.lower()))
 
         for f in data_fields[n]:
             v = game.__dict__.get(f)
             # if v:
-            execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f, dbalias=dbalias)
-                    , (v, game.id, game.source))
+            execute(cur, 'UPDATE {dbalias}.games SET {f}=? WHERE id=? and source=?'.format(f=f, dbalias=dbalias), (v, game.id, game.source))
     doit('p', 0)
 
     if game.zip or game.dir:
         doit('i', 1)
 
     close(conn)
+
 
 def close(conn):
     conn.commit()
@@ -127,7 +130,8 @@ def load_games(where='', orderby='name'):
         where = ' where ' + where
 
     execute(cur,
-            ('select * from {0} ' + where + '' + ' order by ' + orderby).format(game_table())
+            ('select * from {0} ' + where + '' + ' order by ' +
+             orderby).format(game_table())
             )
     rows = cur.fetchall()
     for row in rows:
@@ -135,14 +139,17 @@ def load_games(where='', orderby='name'):
         g.__dict__ = dict(zip(fields_all, row))
         games.append(g)
     cur.close()
-    games = filter(lambda g:g.name, games)
+    games = filter(lambda g: g.name, games)
     return games
+
 
 def game_table():
     join = 'p.games LEFT JOIN i.games ON p.games.source=i.games.source and p.games.id=i.games.id'
-    f = ','.join(['p.games.source', 'p.games.id'] + game.fields_parse + game.fields_install)
+    f = ','.join(['p.games.source', 'p.games.id'] + game.fields_parse +
+                 game.fields_install)
     x = '(select {f} from {join})'.format(f=f, join=join)
     return x
+
 
 def load_game_by_key(source, id, ignore_empty=True):
 

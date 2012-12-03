@@ -58,7 +58,8 @@ class Abandonia(IPlugin):
         # game.programmer =
         # game.setSize(parser.getTextAfter("Size:"));
         game.publisher = parser.getTextAfter("publisher")
-        game.screenshot_url_list = '|'.join(self.selectScreenshots(parser.getImages(), game.id))
+        game.screenshot_url_list = '|'.join(
+            self.selectScreenshots(parser.getImages(), game.id))
         if "bootdisk" in parser.getImages():
             game.platform = 'dos'
         elif "dosbox" in parser.getImages():
@@ -67,7 +68,6 @@ class Abandonia(IPlugin):
             game.platform = 'win'
         else:
             game.platform = 'dos'
-
 
     def selectScreenshots(self, images, id):
         # example: /files/games/352/Daughter of Serpents_7.jpg
@@ -81,16 +81,19 @@ class Abandonia(IPlugin):
         return "http://www.abandonia.com/en/games/" + str(id) + "/index.html"
 
     def download_options(self, game):
-        parent = "http://www.abandonia.com/en/downloadgame/" + str(game.id) + "/index.html"
+        parent = "http://www.abandonia.com/en/downloadgame/" + str(
+            game.id) + "/index.html"
         downloadOptions = dict(useSessionCookie=True, referer=parent)
         return downloadOptions
 
     def game_file_url(self, game):
-        parent = "http://www.abandonia.com/en/downloadgame/" + str(game.id) + "/index.html"
+        parent = "http://www.abandonia.com/en/downloadgame/" + str(
+            game.id) + "/index.html"
 
         # old
         # parser = WebParser.WebParser(parent, cached=False)
-        # game_file_url = parser.getFirstLink(".*files.abandonia.com/download.*")
+        # game_file_url =
+        # parser.getFirstLink(".*files.abandonia.com/download.*")
 
         # example:
 #        function go_to_downloadGame()

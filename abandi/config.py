@@ -13,7 +13,3 @@ GameArchives = ABANDI_HOME_DIR / "cache" / "gamezip"
 DB_GAME_URL = 'https://github.com/downloads/ponty/abandi/parsedb.sqlite.7z'
 DB_GAME_PATH = ABANDI_HOME_DIR / 'parsedb.sqlite'
 DB_FILES_PATH = ABANDI_HOME_DIR / 'installdb.sqlite'
-
-
-
-

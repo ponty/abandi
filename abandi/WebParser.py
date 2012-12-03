@@ -35,9 +35,8 @@ class WebParser:
             list.append(srcFull)
         return list
 
-
     def getAbsUrl(self, url):
-        absUrl = '';
+        absUrl = ''
         if url.startswith("http"):
             absUrl = url
         else:
@@ -48,7 +47,7 @@ class WebParser:
         if baseUrl.endswith(SLASH) and url2.startswith(SLASH):
             return baseUrl + url2[1:]
         else:
-            if not baseUrl.endswith(SLASH) and not url2.startswith(SLASH)   :
+            if not baseUrl.endswith(SLASH) and not url2.startswith(SLASH):
                 return baseUrl + SLASH + url2
             else:
                 return baseUrl + url2
@@ -59,7 +58,7 @@ class WebParser:
         base = ''
         if slashPos >= 0:
             base = self.url[0:slashPos]
-        else     :
+        else:
             base = self.url
         return base
 
@@ -90,7 +89,6 @@ class WebParser:
                             if "{" not in text:
                                 self.texts.append(text)
         return self.texts
-
 
     def getTextRelative(self, str, plus):
         texts = self.getTexts()

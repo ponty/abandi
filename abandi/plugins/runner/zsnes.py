@@ -5,7 +5,7 @@ from abandi.iplugin import IPlugin
 
 class zsnes(IPlugin):
     hook = 'runner'
-    name='zsnes'
+    name = 'zsnes'
 
     long_name = 'ZSNES'
     home_url = 'http://www.zsnes.com/'
@@ -16,9 +16,10 @@ class zsnes(IPlugin):
     platforms = ['snes']
     ubuntu_package = 'zsnes'
     cmd_available = 'zsnes -?'
-    
+
     def run_game(self, game):
-        EasyProcess(['zsnes', searchExe(game.dir, game.name, self.extensions)]).call()
+        EasyProcess(
+            ['zsnes', searchExe(game.dir, game.name, self.extensions)]).call()
 
     def version(self):
         ''' no switch for version

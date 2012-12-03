@@ -15,7 +15,7 @@ SKY_CPT = "sky.cpt"
 
 class scummvm(IPlugin):
     hook = 'runner'
-    name='scummvm'
+    name = 'scummvm'
 
     long_name = 'ScummVM'
     extensions = []
@@ -35,8 +35,9 @@ class scummvm(IPlugin):
         if not len(game_dir.files()):
             game_dir = game_dir.dirs()[0]
         options = os.environ.get('ABANDI_SCUMMVM_OPTIONS', '')
-        #TODO: options split is not good
-        EasyProcess(['scummvm', '-p', game_dir] + options.split() + [ str(game.scummvm_id)]).call()
+        # TODO: options split is not good
+        EasyProcess(['scummvm', '-p', game_dir] + options.split() +
+                    [str(game.scummvm_id)]).call()
 
     def can_run_game(self, game):
         ok = False
@@ -45,12 +46,13 @@ class scummvm(IPlugin):
         except:
             pass
         return ok
-    
+
     def version(self):
         return extract_version(EasyProcess('scummvm -v').call().stdout)
 
     def do_copy(self, game):
         dir = path(game.dir)
+
         def copyls(src, trg):
             files = dir.files(src.upper()) + dir.files(src.lower())
             files.sort()
@@ -88,7 +90,6 @@ class scummvm(IPlugin):
             # * Rename disk image 2 to zak2.d64.
             copyls("*.d64", 'zak%d.d64')
 
-
     def extractGameMap(self, sysout):
         lines = sysout.splitlines()
 
@@ -102,12 +103,12 @@ class scummvm(IPlugin):
                 map[ls[2].strip()] = ls[0].strip()
         return map
 
-
     def getGameListInt(self):
         if not self.gameMap:
             stdout = EasyProcess('scummvm --list-games').call().stdout
             self.gameMap = self.extractGameMap(stdout)
-            self.gameMap.update({'gobliiins':'gob', 'gobliins':'gob', 'goblins':'gob', })
+            self.gameMap.update(
+                {'gobliiins': 'gob', 'gobliins': 'gob', 'goblins': 'gob', })
         return self.gameMap
 
     def findInList(self, name, gmap):
@@ -117,19 +118,19 @@ class scummvm(IPlugin):
         if not sname:
             return
         ls = []
-        if not len(ls):        
+        if not len(ls):
             for k in skeys:
                 if sname == k:
                     ls.append(k)
-#        if not len(ls):        
+#        if not len(ls):
 #            for k in skeys:
 #                if sname in k:
 #                    ls.append(k)
-        if not len(ls):        
+        if not len(ls):
             for k in skeys:
                 if len(k) > 4 and k in sname:
                     ls.append(k)
-        if not len(ls):        
+        if not len(ls):
             for k in skeys:
                 code = gmap[sdict[k]]
                 nr = None
@@ -144,9 +145,9 @@ class scummvm(IPlugin):
                     nk = k.replace(nr, '', 1)
                     if nsname in nk:
                         ls.append(k)
-                    
+
         ls.sort(key=len)
-        if len(ls):        
+        if len(ls):
             return sdict[ls[0]]
 
     def scummvm_id(self, game):
@@ -160,7 +161,7 @@ class scummvm(IPlugin):
         for x in no_words:
             if x in name:
                 assert 0, 'scummvm code not found for:' + name
-            
+
         if not code:
             if 'kyrandia' in name:
                 if 'hand' in name:
@@ -171,7 +172,7 @@ class scummvm(IPlugin):
                     code = "kyra1"
             if 'future wars' in name:
                 code = "cine"
-                  
+
         if not code:
             # String search = simplifyText(name)
             gameListMap = self.getGameListInt()
@@ -181,20 +182,19 @@ class scummvm(IPlugin):
         logging.debug('scummvm_id:' + code)
         return code
 
-
     def simplifyText(self, txt):
         ignored_words = 'the of s a and i ii iii'.split()
         ignored_chars = '0123456789'
         txt = txt.lower()
-        txt = ''.join(map(lambda x : x if x not in ignored_chars else ' ', txt))
-        txt = ''.join(map(lambda x : x if x.isalnum() else ' ', txt))
-        
+        txt = ''.join(
+            map(lambda x: x if x not in ignored_chars else ' ', txt))
+        txt = ''.join(map(lambda x: x if x.isalnum() else ' ', txt))
+
         words = txt.split()
         words = filter(lambda x: x not in ignored_words, words)
-        
+
         txt = ' '.join(words)
         return txt.strip()
-
 
     def downloadSupportFiles(self, game):
         code = game.scummvm_id

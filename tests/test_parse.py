@@ -46,6 +46,3 @@ def test_osd():
     eq_(g.id, 1)
     eq_(g.name, '10th Frame Bowling')
     eq_(g.platform, 'dos')
-
-
-

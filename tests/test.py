@@ -12,7 +12,7 @@ def test_game():
     eq_(g.name, "Pharaoh's Curse")
     eq_(g.platform, 'c64')
 
-    
+
 def test_boulder():
     games = search_games(where='name like "%boulder%"')
     print games

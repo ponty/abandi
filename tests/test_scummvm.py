@@ -143,7 +143,7 @@ Nippon Safes, Inc.
 Future Wars|cine
 Future Wars - Time Travellers|cine
 '''.strip().splitlines()
-yes=dict([(x.split('|')+[''])[0:2] for x in yes])
+yes = dict([(x.split('|') + [''])[0:2] for x in yes])
 
 
 no = '''
@@ -168,33 +168,34 @@ Powers of Gloom
 Prodigy, The
 Sexy Ghosts'n Goblins
 '''.strip().splitlines()
-#One on One Backyard Basketball
+# One on One Backyard Basketball
 
 
 class dummy:
     pass
 
+
 class TestScummvm(unittest.TestCase):
 
     def setUp(self):
-        #self.seq = range(10)
+        # self.seq = range(10)
         pass
 
     def test_no(self):
-        r=Runner('scummvm')
+        r = Runner('scummvm')
         for x in no:
-            #print x
+            # print x
             g = dummy()
             g.name = x
-            #r.scummvm_id(g)
+            # r.scummvm_id(g)
             self.assertRaises(AssertionError, r.scummvm_id, g)
-    
+
     def test_yes(self):
-        r=Runner('scummvm')
+        r = Runner('scummvm')
         for x in yes.keys():
-            #print x
+            # print x
             g = dummy()
             g.name = x
-            id=r.scummvm_id(g)
+            id = r.scummvm_id(g)
             if yes.get(x):
                 self.assertEquals(id, yes.get(x))

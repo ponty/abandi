@@ -14,7 +14,7 @@ class Soup(IPlugin):
         self.parser = self.BeautifulSoup.BeautifulSoup(html)
 
     def images(self):
-        if self.parser is  None:
+        if self.parser is None:
             return
         ls = []
         elems = self.parser.findAll('img')
@@ -25,7 +25,7 @@ class Soup(IPlugin):
         return ls
 
     def links(self):
-        if self.parser is  None:
+        if self.parser is None:
             return
         links = []
         elems = self.parser.findAll('a')
@@ -35,7 +35,7 @@ class Soup(IPlugin):
         return links
 
     def texts(self):
-        if self.parser is  None:
+        if self.parser is None:
             return
         texts = []
         elems = self.parser.findAll(text=True)

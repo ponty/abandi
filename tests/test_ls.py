@@ -12,7 +12,3 @@ class TestLs(unittest.TestCase):
         list_plugins()
         list_runners()
         list_sources()
-        
-        
-        
-        

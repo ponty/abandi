@@ -19,8 +19,6 @@ def list_runners():
         ls += ['"' + x.home_url + '"']
 
         line = ', '.join(ls)
-        s += line+'\n'    
+        s += line + '\n'
     print s
     return s
-
-

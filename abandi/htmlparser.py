@@ -10,4 +10,3 @@ def HtmlParser(name=None):
 @entrypoint
 def test():
     print HtmlParser()
-

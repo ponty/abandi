@@ -5,7 +5,7 @@ from abandi.iplugin import IPlugin
 
 class hatari(IPlugin):
     hook = 'runner'
-    name='hatari'
+    name = 'hatari'
 
     long_name = 'Hatari'
     home_url = 'http://hatari.berlios.de/'
@@ -15,7 +15,8 @@ class hatari(IPlugin):
     cmd_available = 'hatari -v'
 
     def run_game(self, game):
-        EasyProcess(['hatari', searchExe(game.dir, game.name, self.extensions)]).call()
+        EasyProcess(['hatari', searchExe(game.dir, game.name,
+                    self.extensions)]).call()
 
     def version(self):
         return extract_version(EasyProcess('hatari -v').call().stdout)

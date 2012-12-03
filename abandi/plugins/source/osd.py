@@ -20,7 +20,6 @@ class Osd(IPlugin):
         from abandi import WebParser
         self.WebParser = WebParser
 
-
     def parse_game(self, id):
         game = Game()
 
@@ -51,14 +50,14 @@ class Osd(IPlugin):
 
         images = parser.getImages()
         game.screenshot_url_list = []
-        for image in images   :
-            if "/screens/" in image     :
+        for image in images:
+            if "/screens/" in image:
                 game.screenshot_url_list.append(image)
         game.screenshot_url_list = '|'.join(game.screenshot_url_list)
 
         links = parser.getLinks()
-        for link in links   :
-            if (link.endswith(".zip"))     :
+        for link in links:
+            if (link.endswith(".zip")):
                 game.game_file_url = (link)
                 break
         game.platform = 'dos'
@@ -66,8 +65,10 @@ class Osd(IPlugin):
     def extractName(self, parser):
         name = parser.getTextBefore("Maker:")
         if name:
-            name = name.replace("\n", "").replace("\r", "").replace("  ", " ").replace("  ", " ")
-            name = name.replace("  ", " ").replace("  ", " ").replace("  ", " ")
+            name = name.replace("\n", "").replace(
+                "\r", "").replace("  ", " ").replace("  ", " ")
+            name = name.replace(
+                "  ", " ").replace("  ", " ").replace("  ", " ")
         return name
 
     def getTextWith(self, texts, key):
@@ -88,7 +89,8 @@ class Osd(IPlugin):
             all_links = filter((lambda x: 'www.oldschooldos.com' in x and 'action.php' not in x), all_links)
             first = "10thframebowling"
             full_first = filter((lambda x: first in x), all_links)[0]
-            all_links = all_links [all_links.index(full_first):]
+            all_links = all_links[all_links.index(full_first):]
             all_links = [''] + all_links
-            logging.debug('found game links:' + '\n'.join([str(all_links.index(x)) + ':' + x for x in all_links]))
+            logging.debug('found game links:' + '\n'.join(
+                [str(all_links.index(x)) + ':' + x for x in all_links]))
         return all_links[id]

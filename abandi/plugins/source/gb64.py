@@ -64,7 +64,8 @@ class Gamebase64(IPlugin):
         game.source = self.name
         self.parseLinks(game, parser)
 
-        game.screenshot_url_list = '|'.join(self.selectScreenshots(parser.getImages(), id))
+        game.screenshot_url_list = '|'.join(
+            self.selectScreenshots(parser.getImages(), id))
 
         if not game or not game.name or "Banner Exchange" in game.name:
             return None

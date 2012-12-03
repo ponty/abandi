@@ -14,4 +14,3 @@ def game_sources():
 def test():
     print GameSource('abandoneer')
     print game_sources()
-

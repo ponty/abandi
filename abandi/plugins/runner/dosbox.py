@@ -6,7 +6,7 @@ from abandi.iplugin import IPlugin
 
 class Dosbox(IPlugin):
     hook = 'runner'
-    name='dosbox'
+    name = 'dosbox'
 
     long_name = 'DOSBox'
     home_url = 'http://www.dosbox.com/'

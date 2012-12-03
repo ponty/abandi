@@ -5,7 +5,7 @@ from abandi.iplugin import IPlugin
 
 class Stella(IPlugin):
     hook = 'runner'
-    name='stella'
+    name = 'stella'
 
     home_url = 'http://stella.sourceforge.net/'
     long_name = 'Stella'
@@ -15,7 +15,8 @@ class Stella(IPlugin):
     cmd_available = 'stella -help'
 
     def run_game(self, game):
-        EasyProcess(['stella', searchExe(game.dir, game.name, self.extensions)]).call()
+        EasyProcess(['stella', searchExe(game.dir, game.name,
+                    self.extensions)]).call()
 
     def version(self):
         return extract_version(EasyProcess('stella -help').call().stdout)

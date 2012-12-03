@@ -19,9 +19,6 @@ def list_sources():
         ls += ['"' + str(x.max_game_id) + '"']
 
         line = ', '.join(ls)
-        s += line+'\n'    
+        s += line + '\n'
     print s
     return s
-
-
-

@@ -5,7 +5,7 @@ from abandi.iplugin import IPlugin
 
 class Vice(IPlugin):
     hook = 'runner'
-    name='vice'
+    name = 'vice'
 
     long_name = 'VICE'
     home_url = 'http://www.viceteam.org/'
@@ -15,7 +15,8 @@ class Vice(IPlugin):
     cmd_available = 'x64 -h'
 
     def run_game(self, game):
-        EasyProcess(['x64', searchExe(game.dir, game.name, self.extensions)]).call()
+        EasyProcess(
+            ['x64', searchExe(game.dir, game.name, self.extensions)]).call()
 
     def version(self):
         ''' no switch for version

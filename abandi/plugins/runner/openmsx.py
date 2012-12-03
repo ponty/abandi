@@ -5,7 +5,7 @@ from abandi.iplugin import IPlugin
 
 class openmsx(IPlugin):
     hook = 'runner'
-    name='openmsx'
+    name = 'openmsx'
 
     home_url = 'http://openmsx.sourceforge.net/'
     long_name = 'openMSX'
@@ -15,7 +15,8 @@ class openmsx(IPlugin):
     cmd_available = 'openmsx -v'
 
     def run_game(self, game):
-        EasyProcess(['openmsx' , searchExe(game.dir, game.name, self.extensions)]).call()
+        EasyProcess(['openmsx', searchExe(game.dir, game.name,
+                    self.extensions)]).call()
 
     def version(self):
         return extract_version(EasyProcess('openmsx -v').call().stdout)

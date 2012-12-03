@@ -6,9 +6,10 @@ import plugins
 
 log = logging.getLogger(__name__)
 
+
 def  plugin(name=None, **kw):
     all = plugins(**kw)
-    d = dict([(x.name , x) for x in all])
+    d = dict([(x.name, x) for x in all])
     pl = None
     if name:
         pl = d.get(name)
@@ -22,15 +23,18 @@ def  plugin(name=None, **kw):
         log.debug('plugin not found')
     return pl
 
+
 def default_places():
     x = [path(__file__).dirname() / 'plugins']
     x += [config.ABANDI_HOME_DIR / 'plugins']
     return x
 
+
 def plugins(prio_list=None, **kw):
     all = plugins_unsorted(**kw)
     if prio_list:
-        ls = [(prio_list.index(x.name) if x.name in prio_list else 1000, x) for x in all]
+        ls = [(prio_list.index(
+            x.name) if x.name in prio_list else 1000, x) for x in all]
         ls.sort(key=lambda x: x[0])
         all = [x[1] for x in ls]
     return all
@@ -64,7 +68,8 @@ def plugins_unsorted(hook=None, places=None, ext='ini'):
             else:
                 jo = p.hook == hook
                 if jo:
-                    log.debug('plugin "' + p.name + '" was accepted for hook "' + hook + '"')
+                    log.debug('plugin "' + p.name +
+                              '" was accepted for hook "' + hook + '"')
                     if hasattr(p, 'available'):
                         jo = p.available()
                     else:
@@ -73,4 +78,3 @@ def plugins_unsorted(hook=None, places=None, ext='ini'):
 
     all = [x for x in all if pfilter(x)]
     return all
-

@@ -11,6 +11,3 @@ def list_plugins():
     ls.sort(key=operator.attrgetter('name'))
     for x in ls:
         print '%-20s' % x.name, x.hook
-
-
-

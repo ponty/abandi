@@ -4,24 +4,24 @@ from abandi.iplugin import IPlugin
 import path
 
 
-class Cache ( IPlugin):
-    hook='downloader'
-    name='cache'
+class Cache (IPlugin):
+    hook = 'downloader'
+    name = 'cache'
 
     def __init__(self):
         self.backend = None
 
     def download(self, url, targetDir, fileName=None, **kw):
-        #assert self.backend
+        # assert self.backend
         targetDir = path.path(targetDir)
 
         if url:
             if not fileName:
                 fileName = FileUtils.convertToFileName(url)
-            pfad = targetDir / fileName;
+            pfad = targetDir / fileName
             if pfad.isfile() and pfad.getsize():
                 return pfad
-        
+
         pl = Urllib()
         return pl.download(url, targetDir, fileName, **kw)
 

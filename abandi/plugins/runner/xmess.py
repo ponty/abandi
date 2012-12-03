@@ -4,7 +4,7 @@ from abandi.iplugin import IPlugin
 
 # not working in ubuntu
 
-#class xmess(IPlugin):
+# class xmess(IPlugin):
 #    hook = 'runner'
 #
 #    long_name='xmess'
